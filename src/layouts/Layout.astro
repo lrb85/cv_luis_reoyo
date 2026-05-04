@@ -1,9 +1,14 @@
 ---
 interface Props {
   title: string;
+  lang?: string;
 }
 import { ClientRouter } from 'astro:transitions';
+import { useTranslations, getLangFromUrl } from '../i18n/utils';
+
 const { title } = Astro.props;
+const lang = Astro.props.lang || getLangFromUrl(Astro.url);
+const t = useTranslations(lang as any);
 ---
 <!DOCTYPE html>
 <html lang="es">
@@ -34,6 +39,15 @@ const { title } = Astro.props;
 </head>
 <body>
   <slot />
+  <footer class="cv-footer">
+    <div class="container">
+      <div class="footer-content">
+        <span class="footer-line"></span>
+        <p>{t('footer.copy')}</p>
+        <span class="footer-line"></span>
+      </div>
+    </div>
+  </footer>
   <script>
     const handleToggle = () => {
       const element = document.documentElement;
@@ -173,6 +187,54 @@ const { title } = Astro.props;
     font-size: 16px;
     line-height: 1.6;
     transition: background-color 0.3s, color 0.3s;
+  }
+
+  .cv-footer {
+    margin-top: 100px;
+    padding: 50px 0;
+    background: var(--header-grad);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cv-footer::before {
+    content: '';
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: rgba(74, 158, 207, 0.1);
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    color: var(--white);
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-line {
+    height: 1px;
+    flex: 1;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    max-width: 100px;
+  }
+
+  @media print {
+    .cv-footer {
+      display: none !important;
+    }
   }
 
   .container {

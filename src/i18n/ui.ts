@@ -94,6 +94,7 @@ export const ui = {
     'skill.lang.level': 'Profesional',
     'skill.eng.level': 'Técnico',
     'skill.driving.level': 'B',
+    'footer.copy': '© 2026 Luis Reoyo. Todos los derechos reservados.',
   },
   en: {
     'nav.experience': 'Professional Experience',
@@ -183,5 +184,6 @@ export const ui = {
     'skill.lang.level': 'Professional',
     'skill.eng.level': 'Technical',
     'skill.driving.level': 'B',
+    'footer.copy': '© 2026 Luis Reoyo. All rights reserved.',
   },
 } as const;
