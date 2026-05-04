@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+    <defs>
+        <!-- Filtro para darle un toque orgánico y ligeramente irregular a las líneas de la huella -->
+        <filter id="organic" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3.5" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+
+        <!-- Máscara para delimitar dónde se dibujan las líneas negras de la huella -->
+        <mask id="fp-mask">
+            <!-- Fondo blanco: permite dibujar en toda el área por defecto -->
+            <rect width="100%" height="100%" fill="white" />
+
+            <!-- Zona izquierda (negra): bloquea las líneas para mantener el rojo sólido tipo "media luna" -->
+            <path d="M 0 0 L 230 0 Q 280 200 230 500 L 0 500 Z" fill="black" />
+
+            <!-- Zona de la cerradura central MEJORADA (negra): bloquea las líneas para revelar el fondo rojo -->
+            <g fill="black">
+                <!-- Círculo interior perfecto -->
+                <circle cx="320" cy="195" r="32" />
+                <!-- Hueco recto perfecto con el borde inferior redondeado -->
+                <rect x="304" y="205" width="32" height="65" rx="16" />
+            </g>
+        </mask>
+    </defs>
+
+    <!-- Fondo general negro -->
+    <rect width="100%" height="100%" fill="#000000" />
+
+    <!-- Forma roja principal (cuadrado con bordes redondeados) -->
+    <!-- Actúa como el color base que se revelará a través de la huella y la cerradura -->
+    <rect x="100" y="50" width="300" height="300" rx="60" fill="#a00b27" />
+
+    <!-- Líneas de la huella dactilar -->
+    <!-- Dibujadas en negro sobre el cuadro rojo, creando la ilusión óptica -->
+    <g stroke="#000000" stroke-width="5" fill="none" mask="url(#fp-mask)" filter="url(#organic)">
+        <!-- Elipses concéntricas con roturas aleatorias (stroke-dasharray) -->
+        <ellipse cx="320" cy="200" rx="36" ry="46" stroke-dasharray="80 4 40 4" />
+        <ellipse cx="320" cy="200" rx="44" ry="56" stroke-dasharray="150 5 50 3" />
+        <ellipse cx="320" cy="200" rx="52" ry="66" stroke-dasharray="40 4 180 5" />
+        <ellipse cx="320" cy="200" rx="60" ry="76" stroke-dasharray="120 3 100 6" />
+        <ellipse cx="320" cy="200" rx="68" ry="86" stroke-dasharray="250 5 30 4" />
+        <ellipse cx="320" cy="200" rx="76" ry="96" stroke-dasharray="90 4 200 5" />
+        <ellipse cx="320" cy="200" rx="84" ry="106" stroke-dasharray="180 6 120 3" />
+        <ellipse cx="320" cy="200" rx="92" ry="116" stroke-dasharray="60 5 300 4" />
+        <ellipse cx="320" cy="200" rx="100" ry="126" stroke-dasharray="220 4 80 5" />
+        <ellipse cx="320" cy="200" rx="108" ry="136" stroke-dasharray="140 5 160 4" />
+        <ellipse cx="320" cy="200" rx="116" ry="146" stroke-dasharray="300 6 50 3" />
+        <ellipse cx="320" cy="200" rx="124" ry="156" stroke-dasharray="100 4 250 5" />
+        <ellipse cx="320" cy="200" rx="132" ry="166" stroke-dasharray="190 5 110 4" />
+        <ellipse cx="320" cy="200" rx="140" ry="176" stroke-dasharray="70 6 320 5" />
+        <ellipse cx="320" cy="200" rx="148" ry="186" stroke-dasharray="260 4 90 6" />
+        <ellipse cx="320" cy="200" rx="156" ry="196" stroke-dasharray="150 5 200 4" />
+        <ellipse cx="320" cy="200" rx="164" ry="206" stroke-dasharray="350 6 40 5" />
+        <ellipse cx="320" cy="200" rx="172" ry="216" stroke-dasharray="120 4 280 4" />
+        <ellipse cx="320" cy="200" rx="180" ry="226" stroke-dasharray="210 5 140 6" />
+        <ellipse cx="320" cy="200" rx="188" ry="236" stroke-dasharray="80 6 360 4" />
+        <ellipse cx="320" cy="200" rx="196" ry="246" stroke-dasharray="290 4 110 5" />
+        <ellipse cx="320" cy="200" rx="204" ry="256" stroke-dasharray="170 5 230 4" />
+        <ellipse cx="320" cy="200" rx="212" ry="266" stroke-dasharray="380 6 60 5" />
+        <ellipse cx="320" cy="200" rx="220" ry="276" stroke-dasharray="130 4 310 6" />
+        <ellipse cx="320" cy="200" rx="228" ry="286" stroke-dasharray="240 5 160 4" />
+    </g>
+
+    <!-- Tipografía inferior -->
+    <text x="115" y="390" font-family="'Montserrat', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="300" fill="#a0a0a0" letter-spacing="1">especialista en</text>
+    <text x="115" y="420" font-family="'Montserrat', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="26" font-weight="700" fill="#a00b27" letter-spacing="0.5">seguridad informática</text>
+    <text x="390" y="445" font-family="'Montserrat', 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="14" font-weight="300" fill="#a0a0a0" letter-spacing="1" text-anchor="end">y de la información</text>
+</svg>

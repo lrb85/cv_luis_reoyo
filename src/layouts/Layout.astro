@@ -1,0 +1,1004 @@
+---
+interface Props {
+  title: string;
+}
+import { ClientRouter } from 'astro:transitions';
+const { title } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <ClientRouter />
+  <script is:inline>
+    const theme = (() => {
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+        return localStorage.getItem('theme');
+      }
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        return 'dark';
+      }
+      return 'light';
+    })();
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  </script>
+</head>
+<body>
+  <slot />
+  <script>
+    const handleToggle = () => {
+      const element = document.documentElement;
+      const isDark = element.getAttribute('data-theme') === 'dark';
+      const nextTheme = isDark ? 'light' : 'dark';
+      element.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('theme', nextTheme);
+    };
+
+    document.addEventListener('astro:page-load', () => {
+      const themeBtn = document.getElementById('theme-toggle');
+      if (themeBtn) {
+        themeBtn.addEventListener('click', handleToggle);
+      }
+
+      const pdfBtn = document.getElementById('download-pdf');
+      if (pdfBtn) {
+        pdfBtn.addEventListener('click', () => window.print());
+      }
+    });
+  </script>
+</body>
+</html>
+
+<style is:global define:vars={{ 
+  cehBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/ceh.svg')`,
+  cpphpBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/hacking_php.svg')`,
+  segBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/master_security.svg')`,
+  ccnpBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/ccnp_security_color.svg')`,
+  ccnp2Bg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/ccnp_enterprise_color.svg')`,
+  hackBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/hacking_etico.svg')`,
+  dpeBg: `url('${import.meta.env.BASE_URL.replace(/\/$/, '')}/electronica.svg')`
+}}>
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .top-controls {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 10;
+  }
+
+  .theme-btn {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    border: none;
+    color: white;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .theme-btn:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.1);
+  }
+
+  .sun-icon { display: none; }
+  .moon-icon { display: block; }
+
+  :root[data-theme="dark"] .sun-icon { display: block; }
+  :root[data-theme="dark"] .moon-icon { display: none; }
+
+  .lang-switcher {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 600;
+  }
+  .lang-switcher a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .lang-switcher a:hover, .lang-switcher a.active {
+    color: white;
+  }
+  .lang-switcher .separator {
+    color: rgba(255,255,255,0.3);
+  }
+
+  :root {
+    --navy: #1e2d3d;
+    --navy-mid: #253545;
+    --navy-light: #2e4057;
+    --blue-accent: #4a9ecf; 
+    --blue-bright: #5db8e8;
+    --text-dark: #0f172a;
+    --text-mid: #334155;
+    --text-light: #475569;
+    --white: #ffffff;
+    --off-white: #f9fafb;
+    --border: #cbd5e1;
+    --section-bg: #f1f5f9;
+
+    /* Theme-able variables */
+    --bg-main: var(--white);
+    --bg-card: var(--white);
+    --bg-section: var(--section-bg);
+    --text-main: var(--text-dark);
+    --text-sub: var(--text-mid);
+    --border-main: var(--border);
+    --header-grad: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  }
+
+  :root[data-theme="dark"] {
+    --bg-main: #0f172a;
+    --bg-card: #1e293b;
+    --bg-section: #020617;
+    --text-main: #f8fafc;
+    --text-sub: #94a3b8;
+    --border-main: #334155;
+    --header-grad: linear-gradient(135deg, #020617 0%, #1e293b 100%);
+    --blue-accent: #60a5fa;
+  }
+
+  html, body {
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-size: 16px;
+    line-height: 1.6;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 25px;
+  }
+
+  .cv-wrapper {
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  .cv-header {
+    background: var(--header-grad);
+    padding: 70px 0 20px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cv-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(74, 158, 207, 0.12);
+  }
+
+  .cv-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 30%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(74, 158, 207, 0.06);
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .job-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--blue-accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .summary {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 24px;
+  }
+
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .project-link {
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--blue-bright);
+    text-decoration: underline;
+  }
+
+  .contact-item:hover {
+    color: var(--blue-bright);
+  }
+
+  .contact-item .icon {
+    font-size: 0.9rem;
+  }
+
+  .header-avatar {
+    flex-shrink: 0;
+    width: 180px;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ─── BODY ─── */
+  .cv-body {
+    padding: 0 0 25px;
+  }
+
+  /* ─── SECTIONS ─── */
+  .cv-section {
+    padding: 25px 0;
+  }
+
+  .cv-section:last-child {
+    border-bottom: none;
+  }
+
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-bottom: 4px solid var(--blue-accent);
+    display: block;
+    width: 100%;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-item {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-main);
+    padding-left: 20px;
+  }
+
+  .exp-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .exp-label {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+
+  .category-label {
+    color: var(--text-sub);
+    opacity: 0.8;
+    font-weight: 400;
+    min-width: 100px;
+    display: inline-block;
+  }
+
+  .exp-label strong {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1.15rem;
+  }
+
+  .exp-details {
+    padding-left: 16px;
+    border-left: 3px solid var(--blue-accent);
+  }
+
+  .exp-company, .exp-func {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  .exp-func.extra {
+    margin-top: 8px;
+  }
+
+  .detail-label {
+    color: var(--text-sub);
+    opacity: 0.7;
+    font-weight: 600;
+    min-width: 72px;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+
+  .date-range {
+    font-style: italic;
+    color: var(--text-sub);
+    opacity: 0.8;
+    margin-left: 4px;
+  }
+
+  /* ─── EDUCATION (PDF Style) ─── */
+  .edu-section-title {
+    background: var(--bg-section);
+    border-top: 1px solid var(--border-main);
+    border-bottom: 1px solid var(--border-main);
+    padding: 12px 24px;
+    color: var(--blue-accent);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 30px;
+    width: 100%;
+    display: block;
+  }
+
+  .edu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 20px;
+  }
+
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 24px 0;
+    background: none;
+    border-radius: 0;
+    border-left: none;
+    border-bottom: 1px solid var(--border-main);
+    transition: none;
+  }
+
+  .edu-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .edu-item:last-child {
+    border-bottom: none;
+  }
+
+  .edu-info {
+    flex: 1;
+  }
+
+  .edu-label-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+
+  .edu-label-main strong {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1.15rem;
+  }
+
+  .edu-details {
+    padding-left: 16px;
+    border-left: 3px solid var(--blue-accent);
+    margin-bottom: 12px;
+  }
+
+  .edu-badge {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .edu-badge.ceh    { background-image: var(--cehBg); color: transparent; }
+  .edu-badge.cpphp  { background-image: var(--cpphpBg); color: transparent; }
+  .edu-badge.seg    { background-image: var(--segBg); color: transparent; }
+  .edu-badge.ccnp   { background-image: var(--ccnpBg); color: transparent; }
+  .edu-badge.ccnp2  { background-image: var(--ccnp2Bg); color: transparent; }
+  .edu-badge.hack   { background-image: var(--hackBg); color: transparent; }
+  .edu-badge.dpe    { background-image: var(--dpeBg); color: transparent; }
+
+  .edu-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  .edu-row strong {
+    color: var(--text-main);
+  }
+
+  .edu-label {
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-right: 12px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: right;
+  }
+
+  /* ─── SKILLS (PDF Style) ─── */
+  .skills-section {
+    padding: 0;
+    border-bottom: none;
+  }
+
+  .skills-title {
+    background: var(--bg-section);
+    border-top: 1px solid var(--border-main);
+    border-bottom: 1px solid var(--border-main);
+    padding: 12px 24px;
+    color: var(--blue-accent);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 30px;
+    width: 100%;
+    display: block;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 30px 20px;
+    padding-left: 20px;
+  }
+
+  .skill-item {
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    transition: none;
+  }
+
+  .skill-item:hover {
+    background: none;
+    border-color: none;
+  }
+
+  .skill-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    color: var(--text-main);
+  }
+
+  .skill-label {
+    font-weight: 700;
+    min-width: 100px;
+    text-align: left;
+    margin-left: 20px;
+
+    color: var(--text-main);
+  }
+
+  .skill-value {
+    color: var(--text-sub);
+  }
+
+  .skill-name {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 6px;
+  }
+  
+  .skill-name strong {
+    color: var(--white);
+    display: block;
+    font-size: 1.1rem;
+  }
+
+  .skill-level {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .skill-level strong {
+    color: var(--blue-bright);
+  }
+
+
+  @media print {
+    @page {
+      margin: 0;
+    }
+    html {
+      font-size: 12px !important;
+    }
+    body {
+      background: white !important;
+      color: black !important;
+      -webkit-print-color-adjust: exact;
+      color-adjust: exact;
+    }
+    .top-controls, .theme-btn, .lang-switcher {
+      display: none !important;
+    }
+    .cv-header {
+      padding: 15mm 15mm 5mm !important;
+      background: #1e2d3d !important;
+      margin: 0 !important;
+    }
+    .cv-header::before, .cv-header::after {
+      display: none;
+    }
+    .container {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 0 15mm !important;
+    }
+    .cv-header .container {
+      padding: 0 !important;
+    }
+    .cv-body {
+      padding: 5mm 0 15mm !important;
+    }
+    .skills-grid {
+      display: grid !important;
+      grid-template-columns: auto auto auto !important;
+      gap: 15px 12px !important;
+    }
+    .exp-label, .edu-label-main, .exp-company, .exp-func, .edu-row, .skill-row {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 4px !important;
+      margin-bottom: 8px !important;
+      page-break-inside: avoid;
+    }
+    .detail-label {
+      display: inline-block !important;
+      min-width: 55px !important;
+      flex-shrink: 0 !important;
+      font-weight: 600 !important;
+    }
+    .category-label {
+      display: inline-block !important;
+      min-width: 65px !important;
+      flex-shrink: 0 !important;
+      font-weight: 400 !important;
+    }
+    .skill-label {
+      display: inline-block !important;
+      min-width: 60px !important;
+      flex-shrink: 0 !important;
+      font-weight: 600 !important;
+    }
+    .header-avatar {
+      width: 130px !important;
+      height: 130px !important;
+      margin-top: 0 !important;
+    }
+    .header-inner {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+      justify-content: space-between !important;
+      gap: 15px !important;
+    }
+    .name, .job-title, .summary {
+      text-align: left !important;
+    }
+    .contact-bar {
+      justify-content: flex-start !important;
+    }
+    .summary {
+      margin-bottom: 10px !important;
+      line-height: 1.4 !important;
+      max-width: 100% !important;
+    }
+    #print-break {
+      page-break-before: always;
+      padding-top: 20mm !important;
+    }
+    #education-section {
+      padding-top: 20mm !important;
+    }
+    .edu-item {
+      padding: 10px 0 !important;
+    }
+    .edu-label-main {
+      margin-bottom: 4px !important;
+    }
+    .edu-details {
+      margin-bottom: 4px !important;
+    }
+    .edu-row {
+      margin-bottom: 2px !important;
+    }
+    .edu-badge {
+      height: 60px !important;
+      min-width: 60px !important;
+    }
+  }
+
+  /* ─── RESPONSIVE: TABLET ─── */
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 20px;
+    }
+    .name {
+      font-size: 2rem;
+      text-align: center;
+    }
+    .job-title {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .summary {
+      text-align: center;
+      margin: 0 auto 20px;
+      font-size: 0.95rem;
+    }
+    .contact-bar {
+      justify-content: center;
+      gap: 8px 16px;
+    }
+    .header-inner {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 16px;
+    }
+    .header-avatar {
+      width: 120px;
+      height: 120px;
+    }
+    .top-controls {
+      top: 10px;
+      right: 10px;
+      gap: 8px;
+    }
+    .lang-switcher {
+      padding: 4px 10px;
+      font-size: 0.85rem;
+    }
+    .theme-btn {
+      padding: 8px;
+      min-width: 36px;
+      min-height: 36px;
+    }
+    .exp-item {
+      padding-left: 0;
+    }
+    .exp-label {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .category-label {
+      min-width: unset;
+    }
+    .exp-company, .exp-func {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .detail-label {
+      min-width: unset;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      padding-left: 0;
+    }
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px 16px;
+      padding-left: 0;
+    }
+    .skill-label {
+      margin-left: 0;
+      min-width: 80px;
+    }
+    .edu-grid {
+      padding-left: 0;
+    }
+    .edu-item {
+      gap: 16px;
+    }
+    .edu-badge {
+      min-width: 60px;
+      height: 60px;
+    }
+  }
+
+  /* ─── RESPONSIVE: MOBILE ─── */
+  @media (max-width: 480px) {
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+    .container {
+      padding: 0 25px;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      word-break: break-word;
+    }
+    .cv-header {
+      padding: 44px 0 14px;
+    }
+    .header-inner {
+      gap: 10px;
+    }
+    .name {
+      line-height: 1.15;
+    }
+    .job-title {
+      letter-spacing: 0.03em;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+    }
+    .summary {
+      display: block;
+      font-size: 1.1rem;
+      margin: 18px 0;
+    }
+    .header-avatar {
+      margin-top: 40px;
+      width: 220px;
+      height: 220px;
+    }
+    .contact-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px 8px;
+      padding-top: 8px;
+    }
+    .contact-item {
+      font-size: 1rem;
+      gap: 4px;
+      justify-content: center;
+    }
+    .contact-item svg, .contact-item .contact-icon {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+
+    /* ── Sections: unified compact style ── */
+    .section-title {
+      text-align: left;
+      padding-left: 0;
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom-width: 3px;
+    }
+    .cv-section {
+      padding: 24px 0;
+    }
+
+    /* ── Skills ── */
+    .skills-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 12px;
+      padding-left: 0;
+    }
+    .skill-label {
+      margin-left: 0;
+      min-width: unset;
+      font-size: 1.1rem;
+    }
+    .skill-value {
+      font-size: 1rem;
+    }
+    .skill-row {
+      font-size: 1rem;
+      margin-bottom: 2px;
+      gap: 4px;
+    }
+
+    /* ── Education: Unified Font Sizes ── */
+    .edu-grid {
+      gap: 0;
+    }
+    .edu-item {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+    }
+    .edu-badge {
+      min-width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+    .edu-label-main {
+      flex-direction: column;
+      gap: 1px;
+      font-size: 1.1rem; /* Matched to Experience */
+    }
+    .edu-label-main .category-label {
+      display: none;
+    }
+    .edu-label-main strong {
+      font-size: 1.15rem; /* Matched to Experience */
+    }
+    .edu-details {
+      padding-left: 8px;
+      margin-bottom: 4px;
+    }
+    .edu-row {
+      font-size: 1rem; /* Matched to Experience */
+      margin-bottom: 2px;
+      gap: 4px;
+    }
+    .edu-spacer {
+      display: none;
+    }
+
+    /* ── Experience & Projects: same style as Education ── */
+    .exp-item {
+      padding: 20px 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      border-bottom: 1px solid var(--border-main);
+      padding-bottom: 20px;
+    }
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+    .exp-label {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0;
+      margin-bottom: 4px;
+    }
+    .category-label {
+      display: none;
+    }
+    /* Match education left border style on mobile */
+    .exp-details {
+      padding-left: 8px;
+      border-left: 2px solid var(--blue-accent);
+    }
+    .exp-company, .exp-func {
+      line-height: 1.4;
+      margin-bottom: 10px;
+      gap: 3px;
+    }
+    .exp-func.extra {
+      margin-top: 10px;
+    }
+    /* Hide detail labels on mobile, content speaks for itself */
+    .detail-label {
+      display: none;
+    }
+
+
+    /* ── Controls ── */
+    .top-controls {
+      top: 5px;
+      right: 5px;
+      gap: 4px;
+    }
+    .theme-btn {
+      padding: 5px;
+      min-width: 32px;
+      min-height: 32px;
+    }
+    .theme-btn svg {
+      width: 15px;
+      height: 15px;
+    }
+    .lang-switcher {
+      padding: 3px 8px;
+    }
+    .cv-body {
+      padding: 0 0 14px;
+    }
+  }
+</style>
