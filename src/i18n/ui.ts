@@ -65,8 +65,8 @@ export const ui = {
     'exp.hardening.f4': 'Automatización de auditorías de cumplimiento normativo y hardening mediante **HP Network Automation** para el control de configuraciones en entornos de producción masivos.',
     'exp.hardening.f5': 'Desarrollo de documentación técnica POS (Standard Operating Procedures), estandarización de informes de seguridad y soporte nivel 3 en despliegues FOA (First Office Application).',
 
-    // Projects: Intelligent Navigator
-    'proj.navigator.title': 'Intelligent Navigator (Chrome Extension).',
+    // Projects: Intelligent Workspace
+    'proj.navigator.title': 'Intelligent Workspace (Chrome Extension).',
     'proj.navigator.status': 'En desarrollo (Fase Beta).',
     'proj.navigator.desc': 'Extensión de productividad avanzada para navegadores Chromium enfocada en la optimización del flujo de trabajo mediante gestión inteligente de recursos y asistencia mediante IA.',
     'proj.navigator.f1': '<strong>Smart Tabs:</strong> Sistema de agrupación automática por dominios, subdominios y reglas dinámicas personalizables con persistencia de sesiones y búsqueda avanzada.',
@@ -155,8 +155,8 @@ export const ui = {
     'exp.hardening.f4': 'Automation of compliance and hardening audits using **HP Network Automation** for configuration control in massive production environments.',
     'exp.hardening.f5': 'Development of SOP (Standard Operating Procedures) technical documentation, standardization of security reports, and level 3 support in FOA (First Office Application) deployments.',
 
-    // Projects: Intelligent Navigator
-    'proj.navigator.title': 'Intelligent Navigator (Chrome Extension).',
+    // Projects: Intelligent Workspace
+    'proj.navigator.title': 'Intelligent Workspace (Chrome Extension).',
     'proj.navigator.status': 'In development (Beta Phase).',
     'proj.navigator.desc': 'Advanced productivity extension for Chromium browsers focused on workflow optimization through intelligent resource management and AI assistance.',
     'proj.navigator.f1': '<strong>Smart Tabs:</strong> Automatic grouping system by domains, subdomains, and customizable dynamic rules with session persistence and advanced search.',
