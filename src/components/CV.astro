@@ -82,19 +82,19 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func">
               <span class="detail-label">{t('label.function')}</span>
-              <span>{t('exp.blockchain.f1')}</span>
+              <span set:html={t('exp.blockchain.f1')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.blockchain.f2')}</span>
+              <span set:html={t('exp.blockchain.f2')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.blockchain.f3')}</span>
+              <span set:html={t('exp.blockchain.f3')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.blockchain.f4')}</span>
+              <span set:html={t('exp.blockchain.f4')} />
             </div>
           </div>
         </div>
@@ -113,7 +113,7 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func">
               <span class="detail-label">{t('label.function')}</span>
-              <span>{t('exp.tutor.f1')}</span>
+              <span set:html={t('exp.tutor.f1')} />
             </div>
           </div>
         </div>
@@ -136,19 +136,19 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.auditor.f2')}</span>
+              <span set:html={t('exp.auditor.f2')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.auditor.f3')}</span>
+              <span set:html={t('exp.auditor.f3')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.auditor.f4')}</span>
+              <span set:html={t('exp.auditor.f4')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.auditor.f5')}</span>
+              <span set:html={t('exp.auditor.f5')} />
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func">
               <span class="detail-label">{t('label.function')}</span>
-              <span>{t('exp.hardening.f1')}</span>
+              <span set:html={t('exp.hardening.f1')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
@@ -175,7 +175,7 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.hardening.f3')}</span>
+              <span set:html={t('exp.hardening.f3')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
@@ -183,7 +183,7 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
-              <span>{t('exp.hardening.f5')}</span>
+              <span set:html={t('exp.hardening.f5')} />
             </div>
           </div>
         </div>
@@ -206,7 +206,7 @@ const t = useTranslations(lang);
             </div>
             <div class="exp-func">
               <span class="detail-label">{t('label.description')}</span>
-              <span>{t('proj.navigator.desc')}</span>
+              <span set:html={t('proj.navigator.desc')} />
             </div>
             <div class="exp-func extra">
               <span class="detail-label">&nbsp;</span>
@@ -288,6 +288,7 @@ const t = useTranslations(lang);
               <div class="edu-details">
                 <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> Cisco Systems Inc.</div>
                 <div class="edu-row"><span class="detail-label">{t('label.center')}</span> CBCenter Training SL.</div>
+                <div class="edu-row"><span class="detail-label">{lang === 'es' ? 'Verificación:' : 'Verification:'}</span> <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/VHYXZZFL7DREQT33" target="_blank" rel="noopener noreferrer" class="project-link">VHYXZZFL7DREQT33</a></div>
               </div>
             </div>
             <div class="edu-badge ccnp">CCNP</div>
