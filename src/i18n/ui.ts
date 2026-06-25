@@ -61,7 +61,7 @@ export const ui = {
     'exp.hardening.title': 'Especialista en Seguridad y Hardening de Redes IP y Móviles.',
     'exp.hardening.f1': 'Diseño técnico en la securización y hardening de infraestructuras críticas IP y de transporte para Telefónica España (<strong>Red Rima, Red Fusión, Red Anillo y Red Rumba</strong>).',
     'exp.hardening.f2': 'Implementación de guías de Hardening basadas en <strong>CIS Benchmarks</strong> y estándares <strong>STIG</strong> para equipos de red multi-vendor (Cisco, Juniper, Nokia, Huawei, Ericsson y Red Hat).',
-    'exp.hardening.f3': 'Diseño y despliegue de controles de seguridad perimetral, gestión de políticas de acceso (<strong>ACLs, Control Plane Policing</strong>) y protocolos de autenticación (<strong>RADIUS, TACACS+, LDAP</strong>).',
+    'exp.hardening.f3': 'Diseño y despliegue de controles de seguridad perimetral, gestión de políticas de acceso (<strong>ACLs, Control Plane Policing</strong>), protocolos de autenticación (<strong>RADIUS, TACACS+, LDAP</strong>) e integración con <strong>módulos PAM de Linux</strong>.',
     'exp.hardening.f4': 'Automatización de auditorías de cumplimiento normativo y hardening mediante <strong>HP Network Automation</strong> para el control de configuraciones en entornos de producción masivos.',
     'exp.hardening.f5': 'Desarrollo de documentación técnica POS (<strong>Standard Operating Procedures</strong>), estandarización de informes de seguridad y soporte nivel 3 en despliegues <strong>FOA</strong> (First Office Application).',
 
@@ -151,7 +151,7 @@ export const ui = {
     'exp.hardening.title': 'IP and Mobile Network Security and Hardening Specialist.',
     'exp.hardening.f1': 'Technical design in the security and hardening of critical IP and transport infrastructures for Telefónica Spain (<strong>Red Rima, Red Fusión, Red Anillo, and Red Rumba</strong>).',
     'exp.hardening.f2': 'Implementation of Hardening guides based on <strong>CIS Benchmarks</strong> and <strong>STIG</strong> standards for multi-vendor network equipment (Cisco, Juniper, Nokia, Huawei, Ericsson, and Red Hat).',
-    'exp.hardening.f3': 'Design and deployment of perimeter security controls, access policy management (ACLs, Control Plane Policing), and authentication protocols (RADIUS, TACACS+, LDAP).',
+    'exp.hardening.f3': 'Design and deployment of perimeter security controls, access policy management (<strong>ACLs, Control Plane Policing</strong>), authentication protocols (<strong>RADIUS, TACACS+, LDAP</strong>), and integration with <strong>Linux PAM modules</strong>.',
     'exp.hardening.f4': 'Automation of compliance and hardening audits using <strong>HP Network Automation</strong> for configuration control in massive production environments.',
     'exp.hardening.f5': 'Development of SOP (Standard Operating Procedures) technical documentation, standardization of security reports, and level 3 support in <strong>FOA</strong> (First Office Application) deployments.',
 
