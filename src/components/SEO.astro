@@ -58,12 +58,12 @@ const fullImageUrl = new URL(image, baseUrl).toString();
 <meta property="og:locale" content="es_ES" />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={canonicalStr} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={fullImageUrl} />
-<meta property="twitter:site" content={twitterHandle} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalStr} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={fullImageUrl} />
+<meta name="twitter:site" content={twitterHandle} />
 
 <!-- JSON-LD Structured Data -->
 <script is:inline type="application/ld+json" set:html={JSON.stringify({
