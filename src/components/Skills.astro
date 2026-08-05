@@ -29,7 +29,7 @@ const t = useTranslations(lang);
       <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.driving.level')}.</span></div>
     </div>
     <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.tools')}</span> <span class="skill-value"><span class="hide-until-xl">Metasploit, </span>Nmap<span class="hide-until-xl">, Scapy, GNS3</span>.</span></div>
+      <div class="skill-row"><span class="skill-label">{t('label.tools')}</span> <span class="skill-value"><span class="hide-mobile">Metasploit, </span>Nmap<span class="hide-mobile">, Scapy, GNS3</span>.</span></div>
       <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
     </div>
   </div>
@@ -57,12 +57,12 @@ const t = useTranslations(lang);
     width: 100%;
   }
 
-  .hide-until-xl {
+  .hide-mobile {
     display: none;
   }
 
-  @media (min-width: 1280px) {
-    .hide-until-xl {
+  @media (min-width: 769px) {
+    .hide-mobile {
       display: inline !important;
     }
   }
@@ -152,7 +152,7 @@ const t = useTranslations(lang);
   }
 
   @media print {
-    .hide-until-xl {
+    .hide-mobile {
       display: inline !important;
     }
     .skill-row {
