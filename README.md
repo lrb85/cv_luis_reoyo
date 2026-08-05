@@ -10,7 +10,6 @@ Designed not only for the web but mathematically optimized for flawless PDF prin
 - **Extreme SEO & Accessibility**: JSON-LD Structured Data, OpenGraph meta tags, fully accessible semantic HTML, and PWA manifest.
 - **Dark Mode**: Integrated theme switcher with system preference detection and persistence.
 - **Performance Optimized**: Astro's View Transitions and `astro:assets` image optimization for near-instant load times.
-- **AI FSM Orchestration Harness**: Built-in Monte Carlo simulations via `Vitest` to test an advanced Finite State Machine (FSM) that dictates AI agent development pipelines (Gherkin -> Code -> Clean -> Harden -> QA -> Architecture).
 
 ## 🛠️ Tech Stack
 
@@ -51,9 +50,6 @@ This project strictly uses `pnpm` as the package manager.
    ```bash
    pnpm run build
    ```
-
-## 🤖 AI Orchestration (FSM)
-This repository contains a dedicated skill configuration for AI agents (`.agents/skills/fsm-orchestration`). Any AI assisting with this project is bound by a strict software lifecycle: *Epics -> Stories -> Gherkin/QA -> Code -> Unit Tests -> Clean Code -> Hardened Code -> QA -> Architecture*. The robustness of this workflow is mathematically guaranteed by the Vitest Monte Carlo simulation suite included in the `test/` directory.
 
 ## 📄 License
 
