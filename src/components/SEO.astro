@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description = "Currículum Vitae de Luis Reoyo - Desarrollador y profesional de la tecnología.",
-  image = "/og-image.png",
+  image = "/og-image.jpg",
   canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
   type = "website",
 } = Astro.props;
@@ -51,6 +51,9 @@ const fullImageUrl = new URL(image, baseUrl).toString();
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={fullImageUrl} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Luis Alberto Reoyo Bolaños - CV Header" />
 <meta property="og:site_name" content={siteName} />
 <meta property="og:locale" content="es_ES" />
 
