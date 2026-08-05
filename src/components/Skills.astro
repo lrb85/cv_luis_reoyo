@@ -58,12 +58,12 @@ const t = useTranslations(lang);
   }
 
   .hide-mobile {
-    display: none;
+    display: inline;
   }
 
-  @media (min-width: 769px) {
+  @media (max-width: 1024px), (pointer: coarse) {
     .hide-mobile {
-      display: inline !important;
+      display: none !important;
     }
   }
 
