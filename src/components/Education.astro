@@ -1,0 +1,439 @@
+---
+import { useTranslations } from '#/i18n/utils';
+import cehSvg from '#/assets/badges/ceh.svg';
+import cpphpSvg from '#/assets/badges/hacking_php.svg';
+import segSvg from '#/assets/badges/master_security.svg';
+import ccnpSvg from '#/assets/badges/ccnp_security_color.svg';
+import ccnp2Svg from '#/assets/badges/ccnp_enterprise_color.svg';
+import hackSvg from '#/assets/badges/hacking_etico.svg';
+import dpeSvg from '#/assets/badges/electronica.svg';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="cv-section" id="education-section">
+  <h2 class="section-title">{t('nav.education')}</h2>
+  <div class="edu-grid">
+
+    <!-- Especialista en seguridad informática e información -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>{t('edu.master.title')}</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.master.course')}</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> {t('edu.master.center')}</div>
+        </div>
+      </div>
+      <div class="edu-badge seg">SEG</div>
+    </div>
+
+    <!-- CCNP Security -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>CCNP Security (Cisco Certified Network Professional Security).</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> Cisco Systems Inc.</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> CBCenter Training SL.</div>
+          <div class="edu-row"><span class="detail-label">{lang === 'es' ? 'Verificación:' : 'Verification:'}</span> <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/VHYXZZFL7DREQT33" target="_blank" rel="noopener noreferrer" class="project-link">VHYXZZFL7DREQT33</a></div>
+        </div>
+      </div>
+      <div class="edu-badge ccnp">CCNP</div>
+    </div>
+
+    <!-- CCNP -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>CCNP (Cisco Certified Network Professional).</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> Cisco Systems Inc.</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> CBCenter Training SL.</div>
+          <div class="edu-row"><span class="detail-label">{lang === 'es' ? 'Verificación:' : 'Verification:'}</span> <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/K1F43XVF1LQQ109Y" target="_blank" rel="noopener noreferrer" class="project-link">K1F43XVF1LQQ109Y</a></div>
+        </div>
+      </div>
+      <div class="edu-badge ccnp2">CCNP</div>
+    </div>
+
+    <!-- CEH -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>CEH - Certified Ethical Hacker (312-50 v10).</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> EC-Council Certified Ethical Hacker.</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> EC-Council Exam Center.</div>
+        </div>
+      </div>
+      <div class="edu-badge ceh">CEH</div>
+    </div>
+
+    <div class="edu-spacer" style="height: 20px;"></div>
+
+    <!-- PHP Hacking -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>{t('edu.php.title')}</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.php.course')}</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> The Security Sentinel.</div>
+        </div>
+      </div>
+      <div class="edu-badge cpphp">CPPHP</div>
+    </div>
+
+    <!-- Hacking Ético -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>{t('edu.hack.title')}</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.hack.title')}</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> Securizame.</div>
+        </div>
+      </div>
+      <div class="edu-badge hack">HACK</div>
+    </div>
+
+    <!-- Técnico superior -->
+    <div class="edu-item">
+      <div class="edu-info">
+        <div class="edu-label-main">
+          <span class="category-label">{t('label.degree')}</span>
+          <strong>{t('edu.degree.title')}</strong>
+        </div>
+        <div class="edu-details">
+          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.degree.course')}</div>
+          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> I.E.S Juan de la Cierva.</div>
+        </div>
+      </div>
+      <div class="edu-badge dpe">DPE</div>
+    </div>
+
+  </div>
+</section>
+
+<style define:vars={{ 
+  cehBg: `url('${cehSvg.src}')`,
+  cpphpBg: `url('${cpphpSvg.src}')`,
+  segBg: `url('${segSvg.src}')`,
+  ccnpBg: `url('${ccnpSvg.src}')`,
+  ccnp2Bg: `url('${ccnp2Svg.src}')`,
+  hackBg: `url('${hackSvg.src}')`,
+  dpeBg: `url('${dpeSvg.src}')`
+}}>
+  /* ─── SECTIONS ─── */
+  .cv-section {
+    padding: 25px 0;
+  }
+  .cv-section:last-child {
+    border-bottom: none;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-bottom: 4px solid var(--blue-accent);
+    display: block;
+    width: 100%;
+  }
+
+  .project-link {
+    color: var(--blue-accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .project-link:hover {
+    color: var(--blue-bright);
+    text-decoration: underline;
+  }
+
+  /* ─── EDUCATION ─── */
+  .edu-section-title {
+    background: var(--bg-section);
+    border-top: 1px solid var(--border-main);
+    border-bottom: 1px solid var(--border-main);
+    padding: 12px 24px;
+    color: var(--blue-accent);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 30px;
+    width: 100%;
+    display: block;
+  }
+
+  .edu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding-left: 20px;
+  }
+
+  .edu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    padding: 24px 0;
+    background: none;
+    border-radius: 0;
+    border-left: none;
+    border-bottom: 1px solid var(--border-main);
+    transition: none;
+  }
+
+  .edu-item:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .edu-item:last-child {
+    border-bottom: none;
+  }
+
+  .edu-info {
+    flex: 1;
+  }
+
+  .edu-label-main {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+
+  .edu-label-main strong {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1.15rem;
+  }
+
+  .edu-details {
+    padding-left: 16px;
+    border-left: 3px solid var(--blue-accent);
+    margin-bottom: 12px;
+  }
+
+  .edu-badge {
+    min-width: 80px;
+    height: 80px;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: white;
+    text-align: center;
+    flex-shrink: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .edu-badge.ceh    { background-image: var(--cehBg); color: transparent; }
+  .edu-badge.cpphp  { background-image: var(--cpphpBg); color: transparent; }
+  .edu-badge.seg    { background-image: var(--segBg); color: transparent; }
+  .edu-badge.ccnp   { background-image: var(--ccnpBg); color: transparent; }
+  .edu-badge.ccnp2  { background-image: var(--ccnp2Bg); color: transparent; }
+  .edu-badge.hack   { background-image: var(--hackBg); color: transparent; }
+  .edu-badge.dpe    { background-image: var(--dpeBg); color: transparent; }
+
+  .edu-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+
+  .edu-row strong {
+    color: var(--text-main);
+  }
+
+  .edu-label {
+    color: var(--text-main);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-right: 12px;
+    display: inline-block;
+    min-width: 100px;
+    text-align: right;
+  }
+
+  .category-label {
+    color: var(--text-sub);
+    opacity: 0.8;
+    font-weight: 400;
+    min-width: 100px;
+    display: inline-block;
+  }
+
+  .detail-label {
+    color: var(--text-sub);
+    opacity: 0.7;
+    font-weight: 600;
+    min-width: 72px;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+
+  @media print {
+    .edu-label-main {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .edu-label-main, .edu-row {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 4px !important;
+      margin-bottom: 8px !important;
+      page-break-inside: avoid;
+    }
+    .detail-label {
+      display: inline-block !important;
+      min-width: 55px !important;
+      flex-shrink: 0 !important;
+      font-weight: 600 !important;
+    }
+    .category-label {
+      display: inline-block !important;
+      min-width: 65px !important;
+      flex-shrink: 0 !important;
+      font-weight: 400 !important;
+    }
+    .edu-item {
+      padding: 10px 0 !important;
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .edu-label-main {
+      margin-bottom: 4px !important;
+    }
+    .edu-details {
+      margin-bottom: 4px !important;
+    }
+    .edu-row {
+      margin-bottom: 2px !important;
+    }
+    .edu-badge {
+      height: 60px !important;
+      min-width: 60px !important;
+    }
+  }
+
+  /* ─── RESPONSIVE: TABLET ─── */
+  @media (max-width: 768px) {
+    .section-title {
+      font-size: 1.3rem;
+      padding-left: 0;
+    }
+    .edu-grid {
+      padding-left: 0;
+    }
+    .edu-item {
+      gap: 16px;
+    }
+    .edu-badge {
+      min-width: 60px;
+      height: 60px;
+    }
+    .edu-details {
+      padding-left: 10px;
+    }
+    .edu-label-main {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .category-label {
+      min-width: unset;
+    }
+    .detail-label {
+      min-width: unset;
+    }
+  }
+
+  /* ─── RESPONSIVE: MOBILE ─── */
+  @media (max-width: 480px) {
+    .section-title {
+      text-align: left;
+      padding-left: 0;
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom-width: 3px;
+    }
+    .cv-section {
+      padding: 24px 0;
+    }
+    .edu-grid {
+      gap: 0;
+    }
+    .edu-item {
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      text-align: left;
+    }
+    .edu-badge {
+      min-width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+    }
+    .edu-label-main {
+      flex-direction: column;
+      gap: 1px;
+      font-size: 1.1rem;
+    }
+    .edu-label-main .category-label {
+      display: none;
+    }
+    .edu-label-main strong {
+      font-size: 1.15rem;
+    }
+    .edu-details {
+      padding-left: 8px;
+      margin-bottom: 4px;
+      border-left-width: 2px;
+    }
+    .edu-row {
+      font-size: 1rem;
+      margin-bottom: 2px;
+      gap: 4px;
+    }
+    .edu-spacer {
+      display: none;
+    }
+  }
+</style>

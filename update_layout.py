@@ -1,77 +1,14 @@
----
-interface Props {
-  title: string;
-  lang?: string;
-}
-import { ClientRouter } from 'astro:transitions';
-import { useTranslations, getLangFromUrl } from '#/i18n/utils';
-import SEO from '../components/SEO.astro';
+import re
 
-const { title } = Astro.props;
-const lang = Astro.props.lang || getLangFromUrl(Astro.url);
-const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
----
-<!DOCTYPE html>
-<html lang={lang}>
-<head>
-  <SEO title={title} />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
-  <ClientRouter />
-  <script is:inline>
-    const theme = (() => {
-      if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-        return localStorage.getItem('theme');
-      }
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-      }
-      return 'light';
-    })();
-    if (theme === 'light') {
-      document.documentElement.setAttribute('data-theme', 'light');
-    } else {
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-  </script>
-</head>
-<body>
-  <slot />
-  <footer class="cv-footer">
-    <div class="container">
-      <div class="footer-content">
-        <span class="footer-line"></span>
-        <p>{t('footer.copy')}</p>
-        <span class="footer-line"></span>
-      </div>
-    </div>
-  </footer>
-  <script>
-    const handleToggle = () => {
-      const element = document.documentElement;
-      const isDark = element.getAttribute('data-theme') === 'dark';
-      const nextTheme = isDark ? 'light' : 'dark';
-      element.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('theme', nextTheme);
-    };
+with open('src/layouts/Layout.astro', 'r') as f:
+    content = f.read()
 
-    document.addEventListener('astro:page-load', () => {
-      const themeBtn = document.getElementById('theme-toggle');
-      if (themeBtn) {
-        themeBtn.addEventListener('click', handleToggle);
-      }
+style_start = content.find('<style is:global')
+style_content = content[style_start:]
+html_content = content[:style_start]
 
-      const pdfBtn = document.getElementById('download-pdf');
-      if (pdfBtn) {
-        pdfBtn.addEventListener('click', () => window.print());
-      }
-    });
-  </script>
-</body>
-</html>
-
-<style is:global>
+# Let's just create a completely clean style block from scratch that only includes the necessary global elements
+clean_style = """<style is:global>
   *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
@@ -245,8 +182,7 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
   }
 
   @media print {
-    @page { margin: 10mm 0; }
-    @page :first { margin-top: 0; }
+    @page { margin: 0; }
     html { font-size: 12px !important; }
     body {
       background: white !important;
@@ -260,12 +196,7 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
       max-width: 100% !important;
       padding: 0 15mm !important;
     }
-    .cv-body { padding: 0 !important; }
-    .cv-section { padding-top: 5mm !important; padding-bottom: 5mm !important; }
-    .section-title {
-      page-break-after: avoid;
-      break-after: avoid;
-    }
+    .cv-body { padding: 5mm 0 15mm !important; }
   }
 
   /* ─── RESPONSIVE: TABLET ─── */
@@ -309,7 +240,7 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
       min-width: 32px;
       min-height: 32px;
     }
-    .theme-btn svg {
+    .theme-btn :global(svg) {
       width: 15px;
       height: 15px;
     }
@@ -320,4 +251,7 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
       padding: 0 0 14px;
     }
   }
-</style>
+</style>"""
+
+with open('src/layouts/Layout.astro', 'w') as f:
+    f.write(html_content + clean_style)

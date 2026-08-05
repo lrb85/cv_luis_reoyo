@@ -80,6 +80,13 @@ export const ui = {
     'proj.radix.f2': '<strong>Dashboard & Análisis:</strong> Desarrollo de un panel de control interactivo con gráficas dinámicas (<strong>Recharts</strong>) y explorador de transacciones integrado para métricas críticas del ecosistema.',
     'proj.radix.f3': '<strong>Infraestructura:</strong> Stack moderno con <strong>Tailwind CSS 4</strong>, <strong>Supabase</strong>, caché en <strong>Redis (Upstash)</strong> y soporte multilingüe completo con sistema de temas dinámico.',
 
+    // Projects: Radix Rust SDK
+    'proj.rustsdk.title': 'Radix DLT Rust SDK.',
+    'proj.rustsdk.desc': 'Desarrollo de SDK y herramientas nativas en <strong>Rust</strong> para la red descentralizada Radix, implementando las primitivas off-ledger que previamente solo existían en JS/TS.',
+    'proj.rustsdk.f1': '<strong>Core & Criptografía:</strong> Implementación de verificación de pruebas <strong>ROLA</strong> (Log in con Radix), manejo de claves (Keystore) y construcción de transacciones.',
+    'proj.rustsdk.f2': '<strong>Conectividad P2P:</strong> Desarrollo de clientes de transporte modular usando <strong>WebRTC</strong> e <strong>Iroh</strong> para la comunicación directa y segura con la Radix Wallet móvil.',
+    'proj.rustsdk.f3': '<strong>IA & MCP:</strong> Creación del `radixdlt-connector-mcp`, un servidor local MCP que permite a los agentes de IA construir y enviar transacciones al móvil del usuario para su firma, sin exponer claves privadas.',
+
     // Education
     'edu.master.title': 'Especialista en seguridad informática e información.',
     'edu.master.course': 'Posgrado (30 créditos).',
@@ -169,6 +176,13 @@ export const ui = {
     'proj.radix.f1': '<strong>Web3 & Blockchain:</strong> Implementation of wallet connection, advanced <strong>Staking</strong> management with validators, and real-time rewards visualization using the official Radix SDK.',
     'proj.radix.f2': '<strong>Dashboard & Analytics:</strong> Development of an interactive control panel with dynamic charts (<strong>Recharts</strong>) and integrated transaction explorer for critical ecosystem metrics.',
     'proj.radix.f3': '<strong>Infrastructure:</strong> Modern stack with <strong>Tailwind CSS 4</strong>, <strong>Supabase</strong>, <strong>Redis (Upstash)</strong> caching, and full multilingual support with a dynamic theme system.',
+
+    // Projects: Radix Rust SDK
+    'proj.rustsdk.title': 'Radix DLT Rust SDK.',
+    'proj.rustsdk.desc': 'Development of native <strong>Rust</strong> SDK and tools for the Radix decentralized network, implementing off-ledger primitives that previously only existed in JS/TS.',
+    'proj.rustsdk.f1': '<strong>Core & Cryptography:</strong> Implementation of <strong>ROLA</strong> proofs verification (Log in with Radix), key management (Keystore), and transaction building.',
+    'proj.rustsdk.f2': '<strong>P2P Connectivity:</strong> Development of modular transport clients using <strong>WebRTC</strong> and <strong>Iroh</strong> for direct and secure communication with the mobile Radix Wallet.',
+    'proj.rustsdk.f3': '<strong>AI & MCP:</strong> Creation of `radixdlt-connector-mcp`, a local MCP server that allows AI agents to build and send transactions to the user\'s mobile for signing, without exposing private keys.',
 
     // Education
     'edu.master.title': 'Information and Computer Security Specialist.',

@@ -1,0 +1,12 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "target": "es2025",
+    "module": "esnext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "paths": {
+      "#/*": ["./src/*"]
+    }
+  }
+}

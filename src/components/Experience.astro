@@ -1,0 +1,320 @@
+---
+import { useTranslations } from '#/i18n/utils';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="cv-section">
+  <h2 class="section-title">{t('nav.experience')}</h2>
+
+  <!-- EXP: Blockchain -->
+  <div class="exp-item">
+    <div class="exp-label">
+      <span class="category-label">{t('label.category')}</span>
+      <strong>{t('exp.blockchain.title')}</strong>
+    </div>
+    <div class="exp-details">
+      <div class="exp-company">
+        <span class="detail-label">{t('label.project')}</span>
+        {t('exp.blockchain.company')}
+        <span class="date-range">(2021 - {t('label.currently')}).</span>
+      </div>
+      <div class="exp-func">
+        <span class="detail-label">{t('label.function')}</span>
+        <span set:html={t('exp.blockchain.f1')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.blockchain.f2')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.blockchain.f3')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.blockchain.f4')} />
+      </div>
+    </div>
+  </div>
+
+  <!-- EXP: Tutor -->
+  <div class="exp-item">
+    <div class="exp-label">
+      <span class="category-label">{t('label.category')}</span>
+      <strong>{t('exp.tutor.title')}</strong>
+    </div>
+    <div class="exp-details">
+      <div class="exp-company">
+        <span class="detail-label">{t('label.company')}</span>
+        {t('exp.tutor.company')}
+        <span class="date-range">(2019 - 2022).</span>
+      </div>
+      <div class="exp-func">
+        <span class="detail-label">{t('label.function')}</span>
+        <span set:html={t('exp.tutor.f1')} />
+      </div>
+    </div>
+  </div>
+
+  <!-- EXP: Auditor -->
+  <div class="exp-item">
+    <div class="exp-label">
+      <span class="category-label">{t('label.category')}</span>
+      <strong>{t('exp.auditor.title')}</strong>
+    </div>
+    <div class="exp-details">
+      <div class="exp-company">
+        <span class="detail-label">{t('label.company')}</span>
+        Capgemini Engineering (antiguamente Altran Tecnologies)
+        <span class="date-range">(2017 - {t('label.currently')}).</span>
+      </div>
+      <div class="exp-func">
+        <span class="detail-label">{t('label.function')}</span>
+        <span set:html={t('exp.auditor.f1')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.auditor.f2')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.auditor.f3')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.auditor.f4')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.auditor.f5')} />
+      </div>
+    </div>
+  </div>
+
+  <!-- EXP: Hardening -->
+  <div class="exp-item">
+    <div class="exp-label">
+      <span class="category-label">{t('label.category')}</span>
+      <strong>{t('exp.hardening.title')}</strong>
+    </div>
+    <div class="exp-details">
+      <div class="exp-company">
+        <span class="detail-label">{t('label.company')}</span>
+        Capgemini Engineering (antiguamente Altran Tecnologies)
+        <span class="date-range">(2014 - 2026).</span>
+      </div>
+      <div class="exp-func">
+        <span class="detail-label">{t('label.function')}</span>
+        <span set:html={t('exp.hardening.f1')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.hardening.f2')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.hardening.f3')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.hardening.f4')} />
+      </div>
+      <div class="exp-func extra">
+        <span class="detail-label">&nbsp;</span>
+        <span set:html={t('exp.hardening.f5')} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ─── SECTIONS ─── */
+  .cv-section {
+    padding: 25px 0;
+  }
+  .cv-section:last-child {
+    border-bottom: none;
+  }
+  .section-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blue-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    border-bottom: 4px solid var(--blue-accent);
+    display: block;
+    width: 100%;
+  }
+
+  /* ─── EXPERIENCE ─── */
+  .exp-item {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-main);
+    padding-left: 20px;
+  }
+  .exp-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .exp-label {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+  }
+  .category-label {
+    color: var(--text-sub);
+    opacity: 0.8;
+    font-weight: 400;
+    min-width: 100px;
+    display: inline-block;
+  }
+  .exp-label strong {
+    font-weight: 700;
+    color: var(--text-main);
+    font-size: 1.15rem;
+  }
+  .exp-details {
+    padding-left: 16px;
+    border-left: 3px solid var(--blue-accent);
+  }
+  .exp-company, .exp-func {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--text-sub);
+    line-height: 1.6;
+  }
+  .exp-func.extra {
+    margin-top: 8px;
+  }
+  .detail-label {
+    color: var(--text-sub);
+    opacity: 0.7;
+    font-weight: 600;
+    min-width: 72px;
+    flex-shrink: 0;
+    font-size: 0.82rem;
+  }
+  .date-range {
+    font-style: italic;
+    color: var(--text-sub);
+    opacity: 0.8;
+    margin-left: 4px;
+  }
+
+  @media print {
+    .exp-item {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .exp-label {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+    .exp-label, .exp-company, .exp-func {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: baseline !important;
+      gap: 4px !important;
+      margin-bottom: 8px !important;
+      page-break-inside: avoid;
+    }
+    .detail-label {
+      display: inline-block !important;
+      min-width: 55px !important;
+      flex-shrink: 0 !important;
+      font-weight: 600 !important;
+    }
+    .category-label {
+      display: inline-block !important;
+      min-width: 65px !important;
+      flex-shrink: 0 !important;
+      font-weight: 400 !important;
+    }
+  }
+
+  /* ─── RESPONSIVE: TABLET ─── */
+  @media (max-width: 768px) {
+    .exp-item {
+      padding-left: 0;
+    }
+    .exp-label {
+      flex-direction: column;
+      gap: 4px;
+    }
+    .category-label {
+      min-width: unset;
+    }
+    .exp-company, .exp-func {
+      flex-direction: column;
+      gap: 2px;
+    }
+    .detail-label {
+      min-width: unset;
+    }
+    .section-title {
+      font-size: 1.3rem;
+      padding-left: 0;
+    }
+  }
+
+  /* ─── RESPONSIVE: MOBILE ─── */
+  @media (max-width: 480px) {
+    .section-title {
+      text-align: left;
+      padding-left: 0;
+      margin-bottom: 8px;
+      padding-bottom: 5px;
+      border-bottom-width: 3px;
+    }
+    .cv-section {
+      padding: 24px 0;
+    }
+    .exp-item {
+      padding: 20px 0;
+      margin-bottom: 0;
+      padding-left: 0;
+      border-bottom: 1px solid var(--border-main);
+      padding-bottom: 20px;
+    }
+    .exp-item:last-child {
+      border-bottom: none;
+    }
+    .exp-label {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0;
+      margin-bottom: 4px;
+    }
+    .category-label {
+      display: none;
+    }
+    .exp-details {
+      padding-left: 8px;
+      border-left: 2px solid var(--blue-accent);
+    }
+    .exp-company, .exp-func {
+      line-height: 1.4;
+      margin-bottom: 10px;
+      gap: 3px;
+    }
+    .exp-func.extra {
+      margin-top: 10px;
+    }
+    .detail-label {
+      display: none;
+    }
+  }
+</style>

@@ -2,6 +2,9 @@
   "name": "cv-luis",
   "type": "module",
   "version": "0.0.1",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
@@ -11,15 +14,18 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^6.2.1"
+    "astro": "^7.1.6"
   },
   "devDependencies": {
+    "@astrojs/check": "^0.9.10",
     "@eslint/js": "^10.0.1",
-    "@typescript-eslint/eslint-plugin": "^8.59.1",
-    "@typescript-eslint/parser": "^8.59.1",
-    "eslint": "^10.3.0",
-    "eslint-plugin-astro": "^1.7.0",
-    "globals": "^17.6.0",
-    "typescript-eslint": "^8.59.1"
+    "@typescript-eslint/eslint-plugin": "^8.66.0",
+    "@typescript-eslint/parser": "^8.66.0",
+    "eslint": "^10.8.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "globals": "^17.9.0",
+    "sharp": "^0.35.3",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.66.0"
   }
 }

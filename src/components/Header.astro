@@ -1,0 +1,228 @@
+---
+import { Image } from 'astro:assets';
+import { useTranslations } from '#/i18n/utils';
+import Icon from '#/components/Icon.astro';
+import profileImage from '#/assets/luis_reoyo.png';
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<header class="cv-header">
+  <div class="container">
+    <!-- TOP CONTROLS -->
+    <div class="top-controls">
+      <button id="download-pdf" class="theme-btn pdf-btn" aria-label="Download PDF">
+        <Icon name="download" />
+      </button>
+
+      <div class="lang-switcher">
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'} class={lang === 'es' ? 'active' : ''}>ES</a>
+        <span class="separator">|</span>
+        <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/en`} class={lang === 'en' ? 'active' : ''}>EN</a>
+      </div>
+
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+        <Icon name="sun" class="sun-icon" />
+        <Icon name="moon" class="moon-icon" />
+      </button>
+    </div>
+    
+    <div class="header-inner">
+      <div class="header-text">
+        <h1 class="name">Luis Alberto Reoyo Bolaños</h1>
+        <p class="job-title">{t('header.job')}</p>
+        <p class="summary">
+          {t('header.summary')}
+        </p>
+        <div class="contact-bar">
+          <a href="mailto:luisrb1985@gmail.com" class="contact-item">
+            <Icon name="email" class="contact-icon" />
+            luisrb1985@gmail.com
+          </a>
+          <a href="tel:617238725" class="contact-item">
+            <Icon name="phone" class="contact-icon" />
+            617-23-87-25
+          </a>
+          <a href="https://github.com/genkipool" target="_blank" rel="noopener noreferrer" class="contact-item">
+            <Icon name="github" class="contact-icon" />
+            github.com/genkipool
+          </a>
+          <div class="contact-item">
+            <Icon name="location" class="contact-icon" />
+            Madrid, España
+          </div>
+        </div>
+      </div>
+      <div class="header-avatar">
+        <Image src={profileImage} alt="Luis Alberto Reoyo Bolaños" width={180} height={180} />
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  /* ─── HEADER ─── */
+  .cv-header {
+    background: var(--header-grad);
+    padding: 70px 0 20px;
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cv-header::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: rgba(74, 158, 207, 0.12);
+  }
+
+  .cv-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: 30%;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(74, 158, 207, 0.06);
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .name {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .job-title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--blue-accent);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .summary {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+    max-width: 650px;
+    margin-bottom: 24px;
+  }
+
+  .contact-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover {
+    color: var(--blue-bright);
+  }
+
+  .contact-item :global(.icon) {
+    font-size: 0.9rem;
+  }
+
+  .header-avatar {
+    flex-shrink: 0;
+    width: 180px;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @media print {
+    .cv-header {
+      padding: 10mm 15mm 5mm !important;
+      background: #1e2d3d !important;
+      margin: 0 !important;
+    }
+    .cv-header::before, .cv-header::after {
+      display: none;
+    }
+    .cv-header .container {
+      padding: 0 !important;
+    }
+    .header-avatar {
+      width: 120px !important;
+      height: 120px !important;
+      margin-top: 0 !important;
+    }
+    .header-inner {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 15px !important;
+    }
+    .name {
+      font-size: 2.6rem !important;
+      margin-bottom: 4px !important;
+      text-align: left !important;
+    }
+    .job-title {
+      font-size: 1.15rem !important;
+      margin-bottom: 6px !important;
+      text-align: left !important;
+    }
+    .summary {
+      font-size: 1.05rem !important;
+      margin-bottom: 8px !important;
+      line-height: 1.4 !important;
+      max-width: 100% !important;
+      text-align: left !important;
+    }
+    .contact-bar {
+      padding-top: 8px !important;
+      justify-content: flex-start !important;
+    }
+    .contact-item {
+      font-size: 0.9rem !important;
+    }
+  }
+</style>

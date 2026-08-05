@@ -1,0 +1,74 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  canonicalURL?: string | URL;
+  type?: "website" | "article" | "profile";
+}
+
+const {
+  title,
+  description = "Currículum Vitae de Luis Reoyo - Desarrollador y profesional de la tecnología.",
+  image = "/og-image.png",
+  canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
+  type = "website",
+} = Astro.props;
+
+const siteName = "CV Luis Reoyo";
+const twitterHandle = "@luisreoyo";
+const defaultThemeColor = "#1e2d3d";
+
+const canonicalStr = typeof canonicalURL === 'string' ? canonicalURL : canonicalURL.toString();
+const baseUrl = "https://curriculum.genkipool.com";
+const fullImageUrl = new URL(image, baseUrl).toString();
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content={defaultThemeColor} />
+
+<!-- Favicons & Manifest -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={canonicalStr} />
+
+<!-- Primary Meta Tags -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalStr} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={fullImageUrl} />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:locale" content="es_ES" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalStr} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={fullImageUrl} />
+<meta property="twitter:site" content={twitterHandle} />
+
+<!-- JSON-LD Structured Data -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Luis Reoyo",
+  "url": baseUrl,
+  "image": fullImageUrl,
+  "jobTitle": "Software Developer",
+  "description": description
+})} />
