@@ -1,58 +1,52 @@
+import satori from 'satori';
+import { html } from 'satori-html';
+import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 
 async function generateOG() {
-  const width = 1200;
-  const height = 630;
-  
-  // Background with gradients, decorative circles, and well-positioned text (NO OVERLAP)
-  const svgBg = `
-    <svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#111a28" />
-          <stop offset="100%" stop-color="#1e2d3d" />
-        </linearGradient>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#bg-grad)" />
-      
-      <!-- Decorative background circles -->
-      <circle cx="1100" cy="-20" r="160" fill="rgba(74, 158, 207, 0.12)" />
-      <circle cx="400" cy="700" r="200" fill="rgba(74, 158, 207, 0.06)" />
-      
-      <!-- Texts constrained to left side -->
-      <text x="80" y="240" font-family="sans-serif" font-size="64" font-weight="bold" fill="#ffffff" letter-spacing="1">Luis Alberto Reoyo Bolaños</text>
-      <text x="80" y="310" font-family="sans-serif" font-size="28" font-weight="600" fill="#4a9ecf" letter-spacing="2">AUDITOR Y PENTESTER EN SEGURIDAD DE RED MÓVIL</text>
-      
-      <text x="80" y="380" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">Analista de Ciberseguridad con sólida experiencia en la gestión y análisis</text>
-      <text x="80" y="420" font-family="sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">de vulnerabilidades en infraestructuras críticas y tecnología blockchain.</text>
-      
-      <!-- Footer link -->
-      <text x="80" y="550" font-family="sans-serif" font-size="24" fill="#64ffda">https://curriculum.genkipool.com</text>
-    </svg>
+  // Fetch actual Rajdhani font to match the CV exactly
+  const fontDataReq = await fetch('https://github.com/google/fonts/raw/main/ofl/rajdhani/Rajdhani-Bold.ttf');
+  const fontData = await fontDataReq.arrayBuffer();
+
+  // Use exact CSS and layout from Header.astro
+  const markup = html`
+    <div style="display: flex; width: 100%; height: 100%; background: #1e2d3d; color: white; padding: 70px 80px; position: relative; overflow: hidden; font-family: 'Rajdhani'; flex-direction: column; justify-content: center;">
+      <!-- Decorative circle 1 -->
+      <div style="position: absolute; top: -40px; right: -40px; width: 220px; height: 220px; border-radius: 110px; background: rgba(74, 158, 207, 0.12); display: flex;"></div>
+      <!-- Decorative circle 2 -->
+      <div style="position: absolute; bottom: -60px; left: 30%; width: 300px; height: 300px; border-radius: 150px; background: rgba(74, 158, 207, 0.06); display: flex;"></div>
+
+      <div style="display: flex; flex-direction: column; max-width: 700px; z-index: 1;">
+        <h1 style="font-size: 72px; font-weight: 700; margin: 0 0 15px 0; color: #ffffff; letter-spacing: 1px;">Luis Reoyo Bolaños</h1>
+        <p style="font-size: 30px; color: #4a9ecf; text-transform: uppercase; margin: 0 0 30px 0; letter-spacing: 1.5px;">Auditor y pentester en seguridad de Red Móvil</p>
+        <p style="font-size: 26px; color: rgba(255,255,255,0.82); line-height: 1.5; margin: 0;">Analista de Ciberseguridad con sólida experiencia en la gestión y análisis de vulnerabilidades en infraestructuras críticas y tecnología blockchain.</p>
+        
+        <div style="display: flex; margin-top: 40px; padding-top: 25px; border-top: 2px solid rgba(255,255,255,0.15); color: #64ffda; font-size: 26px;">
+           https://curriculum.genkipool.com
+        </div>
+      </div>
+    </div>
   `;
 
-  // Avatar sizing and placement (Right side, well away from text)
-  const avatarSize = 280;
-  
-  const photoBuffer = await sharp('src/assets/luis_reoyo.png')
-    .resize(avatarSize, avatarSize, { fit: 'cover' })
-    .toBuffer();
+  const svg = await satori(markup, {
+    width: 1200,
+    height: 630,
+    fonts: [{ name: 'Rajdhani', data: fontData, weight: 700, style: 'normal' }],
+  });
 
+  const resvg = new Resvg(svg, { background: '#1e2d3d', fitTo: { mode: 'width', value: 1200 } });
+  const pngData = resvg.render().asPng();
+
+  const avatarSize = 320;
+  const photoBuffer = await sharp('src/assets/luis_reoyo.png').resize(avatarSize, avatarSize, { fit: 'cover' }).toBuffer();
   const circleSvg = `<svg width="${avatarSize}" height="${avatarSize}"><circle cx="${avatarSize/2}" cy="${avatarSize/2}" r="${avatarSize/2}" fill="#fff" /></svg>`;
-  const circlePhoto = await sharp(photoBuffer)
-    .composite([{ input: Buffer.from(circleSvg), blend: 'dest-in' }])
-    .png()
-    .toBuffer();
+  const circlePhoto = await sharp(photoBuffer).composite([{ input: Buffer.from(circleSvg), blend: 'dest-in' }]).png().toBuffer();
 
-  await sharp(Buffer.from(svgBg))
-    .composite([
-      // Placed far right, vertically centered
-      { input: circlePhoto, left: 850, top: 175 }
-    ])
-    .jpeg({ quality: 85, chromaSubsampling: '4:4:4' })
+  await sharp(pngData)
+    .composite([{ input: circlePhoto, left: 810, top: 155 }])
+    .jpeg({ quality: 90, chromaSubsampling: '4:4:4' })
     .toFile('public/og-image.jpg');
     
-  console.log("High-quality OG Image generated successfully at public/og-image.jpg");
+  console.log("Premium OG Image generated successfully!");
 }
-
 generateOG().catch(console.error);
