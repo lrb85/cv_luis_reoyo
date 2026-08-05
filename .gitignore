@@ -17,3 +17,7 @@ pnpm-debug.log*
 .DS_Store
 .env
 .env.*
+
+# AI Agents
+.agents/
+skills-lock.json
