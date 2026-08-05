@@ -1,4 +1,4 @@
-import assert from 'assert';
+import { describe, it, expect } from 'vitest';
 
 const STATES = {
   THEMES: 'Themes',
@@ -13,8 +13,6 @@ const STATES = {
   DONE: 'Done'
 };
 
-// Transition matrix defining the FSM. 
-// Para cada estado: [Éxito, Fallo, Probabilidad_Exito_Base, Tiempo_Base]
 const FSM = {
   [STATES.THEMES]: { success: STATES.STORIES, fail: STATES.THEMES, pSuccess: 0.95, time: 10 },
   [STATES.STORIES]: { success: STATES.GHERKIN_QA, fail: STATES.THEMES, pSuccess: 0.90, time: 15 },
@@ -27,7 +25,7 @@ const FSM = {
   [STATES.ARCHITECTURE]: { success: STATES.DONE, fail: STATES.CLEAN_CODE, pSuccess: 0.95, time: 10 },
 };
 
-function runSimulation(noiseFactor) {
+function runSimulation(noiseFactor: number) {
   let currentState = STATES.THEMES;
   let totalTime = 0;
   let iterations = 0;
@@ -37,15 +35,12 @@ function runSimulation(noiseFactor) {
     iterations++;
     const stateDef = FSM[currentState];
     
-    // Introducir ruido en el simulador (retrasos aleatorios de tiempo)
-    const delayNoise = (Math.random() * 0.4) - 0.2; // Variación del -20% al +20%
+    const delayNoise = (Math.random() * 0.4) - 0.2;
     totalTime += stateDef.time * (1 + delayNoise);
 
-    // Introducir ruido de fallos (disminuye ligeramente la probabilidad de éxito)
     const failNoise = (Math.random() * noiseFactor); 
     const effectivePSuccess = stateDef.pSuccess - failNoise;
     
-    // Transición FSM
     const isSuccess = Math.random() < effectivePSuccess;
     currentState = isSuccess ? stateDef.success : stateDef.fail;
   }
@@ -57,41 +52,26 @@ function runSimulation(noiseFactor) {
   };
 }
 
-function runMonteCarlo(runs, noiseFactor) {
-  let successCount = 0;
-  let totalTime = 0;
-  
-  for (let i = 0; i < runs; i++) {
-    const result = runSimulation(noiseFactor);
-    if (result.success) {
-      successCount++;
-      totalTime += result.time;
+describe('FSM Agent Squad Orchestration - Monte Carlo Simulation', () => {
+  it('Debe orquestar con éxito 10,000 iteraciones manteniendo una alta tasa de éxito a pesar del ruido', () => {
+    const RUNS = 10000;
+    const NOISE_FACTOR = 0.1;
+    let successCount = 0;
+    let totalTime = 0;
+
+    for (let i = 0; i < RUNS; i++) {
+      const result = runSimulation(NOISE_FACTOR);
+      if (result.success) {
+        successCount++;
+        totalTime += result.time;
+      }
     }
-  }
 
-  const successRate = successCount / runs;
-  const avgTime = successCount > 0 ? totalTime / successCount : 0;
-  
-  return { successRate, avgTime };
-}
+    const successRate = successCount / RUNS;
+    const avgTime = successCount > 0 ? totalTime / successCount : 0;
 
-console.log("=== Ejecutando pruebas FSM mediante simulación de Monte Carlo ===");
-const RUNS = 10000;
-const NOISE_FACTOR = 0.1; // 10% de ruido en fallos inyectados a los agentes
-
-const { successRate, avgTime } = runMonteCarlo(RUNS, NOISE_FACTOR);
-
-console.log(`Corridas de Monte Carlo: ${RUNS}`);
-console.log(`Tasa de éxito del FSM: ${(successRate * 100).toFixed(2)}%`);
-console.log(`Tiempo medio por iteración épica: ${avgTime.toFixed(2)} unidades de tiempo`);
-
-// Aserciones QA
-try {
-  assert(successRate > 0.80, "Error Crítico: El FSM entra en demasiados cuellos de botella con la tasa de ruido actual.");
-  assert(avgTime < 500, "Error Crítico: El tiempo promedio de finalización se ha disparado (posibles loops infinitos detectados).");
-  console.log("✅ Todas las pruebas de estrés FSM (Monte Carlo) pasadas con éxito.");
-  process.exit(0);
-} catch (error) {
-  console.error("❌ Fallo en test FSM:", error.message);
-  process.exit(1);
-}
+    // Asertions para calidad en Astro (Vitest)
+    expect(successRate).toBeGreaterThan(0.80);
+    expect(avgTime).toBeLessThan(500);
+  });
+});
