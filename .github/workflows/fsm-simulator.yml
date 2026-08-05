@@ -1,0 +1,24 @@
+name: FSM Agent Squad Simulator
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  schedule:
+    - cron: '0 0 * * *' # Ejecuta simulaciones de estrés cada noche
+
+jobs:
+  monte_carlo_tests:
+    name: Run Monte Carlo FSM Simulation
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20.x'
+        
+    - name: Ejecutar Simulador FSM y Pruebas de Monte Carlo
+      run: node scripts/fsm_simulator.mjs
