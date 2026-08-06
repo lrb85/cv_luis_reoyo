@@ -41,7 +41,7 @@ export const ui = {
 
     // Experience: Tutor
     'exp.tutor.title': 'Tutor Curso Hacking Con PHP.',
-    'exp.tutor.company': 'Áreas de servicio de Información (S.L) Madrid.',
+    'exp.tutor.company': 'Áreas de Servicio de Información (S.L) Madrid.',
     'exp.tutor.f1': 'Resolver las dudas del alumnado y evaluar las distintas actividades del curso, actividades como: Hardening <strong>LAMP</strong>, attack <strong>SQL injection</strong>, attacks <strong>DOS</strong>, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, <strong>Tor</strong>.',
 
     // Experience: Auditor
@@ -138,7 +138,7 @@ export const ui = {
 
     // Experience: Tutor
     'exp.tutor.title': 'Hacking with PHP Course Tutor.',
-    'exp.tutor.company': 'Áreas de servicio de Información (S.L) Madrid.',
+    'exp.tutor.company': 'Information Service Areas (S.L) Madrid.',
     'exp.tutor.f1': 'Answering student questions and evaluating course activities, including: <strong>LAMP</strong> Hardening, <strong>SQL injection</strong>, <strong>DoS</strong> attacks, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, and <strong>Tor</strong>.',
 
     // Experience: Auditor
