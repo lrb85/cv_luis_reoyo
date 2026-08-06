@@ -9,7 +9,7 @@ const t = useTranslations(lang);
   <h2 class="section-title">{t('nav.skills')}</h2>
   <div class="skills-grid">
     <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.language')}</span> <span class="skill-value">Python & PHP.</span></div>
+      <div class="skill-row"><span class="skill-label">{t('label.prog_lang')}</span> <span class="skill-value">{lang === 'es' ? 'Python y PHP.' : 'Python & PHP.'}</span></div>
       <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
     </div>
     <div class="skill-item">
@@ -26,7 +26,7 @@ const t = useTranslations(lang);
     </div>
     <div class="skill-item">
       <div class="skill-row"><span class="skill-label">{t('label.carnet')}</span> <span class="skill-value">{lang === 'es' ? 'Conducir' : 'Driving'}.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.driving.level')}.</span></div>
+      <div class="skill-row"><span class="skill-label">{t('label.carnet_type')}</span> <span class="skill-value">{t('skill.driving.level')}.</span></div>
     </div>
     <div class="skill-item">
       <div class="skill-row"><span class="skill-label">{t('label.tools')}</span> <span class="skill-value"><span class="hide-mobile">Metasploit, </span>Nmap<span class="hide-mobile">, Scapy, GNS3</span>.</span></div>
