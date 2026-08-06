@@ -19,7 +19,7 @@ export const ui = {
     'label.course': 'Curso:',
     'label.center': 'Centro:',
     'label.institution': 'Institución:',
-    'label.language': 'Lenguaje:',
+    'label.language': 'Idioma:',
     'label.level': 'Nivel:',
     'label.system': 'Sistema:',
     'label.networking': 'Redes:',
@@ -41,7 +41,7 @@ export const ui = {
 
     // Experience: Tutor
     'exp.tutor.title': 'Tutor Curso Hacking Con PHP.',
-    'exp.tutor.company': 'Áreas de servicio de información (S.L) Madrid.',
+    'exp.tutor.company': 'Áreas de servicio de Información (S.L) Madrid.',
     'exp.tutor.f1': 'Resolver las dudas del alumnado y evaluar las distintas actividades del curso, actividades como: Hardening <strong>LAMP</strong>, attack <strong>SQL injection</strong>, attacks <strong>DOS</strong>, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, <strong>Tor</strong>.',
 
     // Experience: Auditor
@@ -58,7 +58,7 @@ export const ui = {
     'exp.hardening.f2': 'Implementación de guías de Hardening basadas en <strong>CIS Benchmarks</strong> y estándares <strong>STIG</strong> para equipos de red multi-vendor (Cisco, Juniper, Nokia, Huawei, Ericsson y Red Hat).',
     'exp.hardening.f3': 'Diseño y despliegue de controles de seguridad perimetral, gestión de políticas de acceso (<strong>ACLs, Control Plane Policing</strong>), protocolos de autenticación (<strong>RADIUS, TACACS+, LDAP</strong>) e integración con <strong>módulos PAM de Linux</strong>.',
     'exp.hardening.f4': 'Automatización de auditorías de cumplimiento normativo y hardening mediante <strong>HP Network Automation</strong> para el control de configuraciones en entornos de producción masivos.',
-    'exp.hardening.f5': 'Desarrollo de documentación técnica POS (<strong>Standard Operating Procedures</strong>), estandarización de informes de seguridad y soporte nivel 3 en despliegues <strong>FOA</strong> (First Office Application).',
+    'exp.hardening.f5': 'Desarrollo de documentación técnica <strong>SOP (Standard Operating Procedures)</strong>, estandarización de informes de seguridad y soporte nivel 3 en despliegues <strong>FOA</strong> (First Office Application).',
 
     // Projects: Intelligent Workspace
     'proj.navigator.title': 'Intelligent Workspace (Chrome Extension).',
@@ -138,7 +138,7 @@ export const ui = {
 
     // Experience: Tutor
     'exp.tutor.title': 'Hacking with PHP Course Tutor.',
-    'exp.tutor.company': 'Áreas de servicio de información (S.L) Madrid.',
+    'exp.tutor.company': 'Áreas de servicio de Información (S.L) Madrid.',
     'exp.tutor.f1': 'Answering student questions and evaluating course activities, including: <strong>LAMP</strong> Hardening, <strong>SQL injection</strong>, <strong>DoS</strong> attacks, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, and <strong>Tor</strong>.',
 
     // Experience: Auditor
@@ -155,7 +155,7 @@ export const ui = {
     'exp.hardening.f2': 'Implementation of Hardening guides based on <strong>CIS Benchmarks</strong> and <strong>STIG</strong> standards for multi-vendor network equipment (Cisco, Juniper, Nokia, Huawei, Ericsson, and Red Hat).',
     'exp.hardening.f3': 'Design and deployment of perimeter security controls, access policy management (<strong>ACLs, Control Plane Policing</strong>), authentication protocols (<strong>RADIUS, TACACS+, LDAP</strong>), and integration with <strong>Linux PAM modules</strong>.',
     'exp.hardening.f4': 'Automation of compliance and hardening audits using <strong>HP Network Automation</strong> for configuration control in massive production environments.',
-    'exp.hardening.f5': 'Development of SOP (Standard Operating Procedures) technical documentation, standardization of security reports, and level 3 support in <strong>FOA</strong> (First Office Application) deployments.',
+    'exp.hardening.f5': 'Development of <strong>SOP (Standard Operating Procedures)</strong> technical documentation, standardization of security reports, and level 3 support in <strong>FOA</strong> (First Office Application) deployments.',
 
     // Projects: Intelligent Workspace
     'proj.navigator.title': 'Intelligent Workspace (Chrome Extension).',
