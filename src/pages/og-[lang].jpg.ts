@@ -4,6 +4,7 @@ import { html } from 'satori-html';
 import { Resvg } from '@resvg/resvg-js';
 import { ui } from '#/i18n/ui';
 import { getYearsOfExperience } from '#/i18n/utils';
+import sharp from 'sharp';
 import fs from 'fs';
 import path from 'path';
 
@@ -95,11 +96,16 @@ export const GET: APIRoute = async ({ params }) => {
     fitTo: { mode: 'width', value: 1200 },
   });
   
-  const image = resvg.render();
-  
-  return new Response(image.asPng(), {
+  const pngData = resvg.render();
+  const pngBuffer = pngData.asPng();
+
+  const jpegBuffer = await sharp(pngBuffer)
+    .jpeg({ quality: 80, progressive: true })
+    .toBuffer();
+
+  return new Response(jpegBuffer, {
     headers: {
-      'Content-Type': 'image/png',
+      'Content-Type': 'image/jpeg',
       'Cache-Control': 'public, max-age=31536000, immutable',
     },
   });

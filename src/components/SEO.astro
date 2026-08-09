@@ -9,8 +9,10 @@ interface Props {
 
 const {
   title,
-  description = (Astro.currentLocale ?? 'es') === 'es' ? "Currículum Vitae de Luis Reoyo - Senior en Seguridad de Redes." : "Luis Reoyo's Resume - Senior in Network Security.",
-  image = `/og-${Astro.currentLocale ?? 'es'}.png`,
+  description = (Astro.currentLocale ?? 'es') === 'es' 
+    ? "Currículum Vitae de Luis Reoyo, Senior en Seguridad de Redes. Especialista en Telco, hardening y gestión de vulnerabilidades en infraestructuras críticas." 
+    : "Luis Reoyo's Resume, Senior in Network Security. Specialist in Telco, hardening, and vulnerability management across critical infrastructures.",
+  image = `/og-${Astro.currentLocale ?? 'es'}.jpg`,
   canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
   type = "website",
 } = Astro.props;
