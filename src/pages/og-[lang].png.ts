@@ -50,7 +50,7 @@ export const GET: APIRoute = async ({ params }) => {
       <img src="${bgSrc}" style="position: absolute; top: 0; left: 0; width: 1200px; height: 630px;" />
       
       <div style="display: flex; flex-direction: column; margin-left: 95px; margin-top: 155px; width: 660px; z-index: 10;">
-         <div style="font-family: 'Inter'; font-size: 58px; font-weight: 700; color: #ffffff; margin-bottom: 5px; letter-spacing: -1px; text-shadow: 0px 4px 10px rgba(0,0,0,0.5);">
+         <div style="font-family: 'Inter'; font-size: 58px; font-weight: 700; color: #ffffff; margin-bottom: 12px; letter-spacing: -1px; text-shadow: 0px 4px 10px rgba(0,0,0,0.5);">
            ${name}
          </div>
          <div style="font-family: 'Inter'; font-size: 20px; font-weight: 700; color: #38bdf8; margin-bottom: 25px; letter-spacing: 1px; text-shadow: 0px 2px 4px rgba(0,0,0,0.5);">
