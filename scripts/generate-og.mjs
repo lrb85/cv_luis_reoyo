@@ -15,7 +15,7 @@ async function generateOG(lang) {
     : "Cybersecurity Analyst with solid experience in vulnerability management and analysis in critical infrastructures and blockchain technology.";
 
   // Use exact CSS and layout from Header.astro
-  const markup = html`
+  const markup = html(`
     <div style="display: flex; width: 100%; height: 100%; background: #1e2d3d; color: white; padding: 70px 80px; position: relative; overflow: hidden; font-family: 'Rajdhani'; flex-direction: column; justify-content: center;">
       <!-- Decorative circle 1 -->
       <div style="position: absolute; top: -40px; right: -40px; width: 220px; height: 220px; border-radius: 110px; background: rgba(74, 158, 207, 0.12); display: flex;"></div>
@@ -32,7 +32,7 @@ async function generateOG(lang) {
         </div>
       </div>
     </div>
-  `;
+  `);
 
   const svg = await satori(markup, {
     width: 1200,
