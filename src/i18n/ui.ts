@@ -32,10 +32,9 @@ export const ui = {
     // Header
     'header.job': 'Senior en Seguridad de Redes | Especialista en Telco y Hardening',
     'header.summary': 'Cuento con {years} años de experiencia como técnico de seguridad en telecomunicaciones, especializado en hardening y pentesting de dispositivos de red. Actualmente tengo a disposición los certificados de CCNP Security, CCNP y CEH.',
-
-
-
-    // Skills
+    'header.btn.copy': 'Copiar Markdown',
+    'header.btn.pdf': 'Descargar PDF',
+    'header.btn.theme': 'Cambiar tema',    // Skills
     'skill.lang.level': 'Profesional',
     'skill.eng.level': 'Técnico',
     'skill.driving.level': 'B',
@@ -86,8 +85,9 @@ export const ui = {
     // Header
     'header.job': 'Senior in Network Security | Telco & Hardening Specialist',
     'header.summary': '{years} years of experience as a telecommunications security technician, specialized in hardening and pentesting network devices. Currently holding CCNP Security, CCNP, and CEH certifications.',
-
-    // Skills
+    'header.btn.copy': 'Copy Markdown',
+    'header.btn.pdf': 'Download PDF',
+    'header.btn.theme': 'Toggle theme',    // Skills
     'skill.lang.level': 'Professional',
     'skill.eng.level': 'Technical',
     'skill.driving.level': 'B',
