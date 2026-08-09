@@ -30,7 +30,7 @@ export const ui = {
     'label.currently': 'Actualidad',
 
     // Header
-    'header.job': 'Senior en Seguridad de Redes | Especialista en Telco & Hardening',
+    'header.job': 'Senior en Seguridad de Redes | Especialista en Telco y Hardening',
     'header.summary': 'Cuento con {years} años de experiencia como técnico de seguridad en telecomunicaciones, especializado en hardening y pentesting de dispositivos de red. Actualmente tengo a disposición los certificados de CCNP Security, CCNP y CEH.',
 
 

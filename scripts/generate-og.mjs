@@ -9,7 +9,7 @@ async function generateOG(lang) {
   const fontData = await fontDataReq.arrayBuffer();
 
   const title = "Luis Reoyo Bolaños";
-  const subtitle = lang === 'es' ? "Senior en Seguridad de Redes | Telco & Hardening" : "Network Security Engineer | Telco & Hardening";
+  const subtitle = lang === 'es' ? "Senior en Seguridad de Redes | Especialista en Telco y Hardening" : "Network Security Engineer | Telco & Hardening Specialist";
   const desc = lang === 'es' 
     ? "Analista de Ciberseguridad con sólida experiencia en la gestión y análisis de vulnerabilidades en infraestructuras críticas y tecnología blockchain."
     : "Cybersecurity Analyst with solid experience in vulnerability management and analysis in critical infrastructures and blockchain technology.";
@@ -24,7 +24,7 @@ async function generateOG(lang) {
 
       <div style="display: flex; flex-direction: column; max-width: 700px; z-index: 1;">
         <h1 style="font-size: 72px; font-weight: 700; margin: 0 0 15px 0; color: #ffffff; letter-spacing: 1px;">${title}</h1>
-        <p style="font-size: 28px; color: #4a9ecf; text-transform: uppercase; margin: 0 0 30px 0; letter-spacing: 1.5px;">${subtitle}</p>
+        <p style="font-size: 28px; color: #4a9ecf; margin: 0 0 30px 0; letter-spacing: 1.5px;">${subtitle.toUpperCase()}</p>
         <p style="font-size: 26px; color: rgba(255,255,255,0.82); line-height: 1.5; margin: 0;">${desc}</p>
         
         <div style="display: flex; margin-top: 40px; padding-top: 25px; border-top: 2px solid rgba(255,255,255,0.15); color: #64ffda; font-size: 26px;">
