@@ -1,15 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 import { useTranslations } from '#/i18n/utils';
 
 const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
 
-// Get the experience collection for the current language, and sort it by order
-const experienceEntries = await getCollection('experience', ({ id }) => {
-  return id.startsWith(lang + '/');
-});
-experienceEntries.sort((a, b) => a.data.order - b.data.order);
+const experienceEntries = await getLocalizedCollection('experience', lang);
 ---
 
 <section class="cv-section">

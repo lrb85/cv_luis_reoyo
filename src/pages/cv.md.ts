@@ -1,4 +1,4 @@
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 import { useTranslations } from '#/i18n/utils';
 
 export async function generateCvMarkdown(lang: 'es' | 'en') {
@@ -9,16 +9,10 @@ export async function generateCvMarkdown(lang: 'es' | 'en') {
     return html.replace(/<\/?strong>/g, '**').replace(/<[^>]+>/g, '');
   };
 
-  const expEntries = await getCollection('experience', ({ id }) => id.startsWith(lang + '/'));
-  expEntries.sort((a, b) => a.data.order - b.data.order);
-
-  const projEntries = await getCollection('projects', ({ id }) => id.startsWith(lang + '/'));
-  projEntries.sort((a, b) => a.data.order - b.data.order);
-
-  const eduEntries = await getCollection('education', ({ id }) => id.startsWith(lang + '/'));
-  eduEntries.sort((a, b) => a.data.order - b.data.order);
-
-  const skillEntries = await getCollection('skills', ({ id }) => id.startsWith(lang + '/'));
+  const expEntries = await getLocalizedCollection('experience', lang);
+  const projEntries = await getLocalizedCollection('projects', lang);
+  const eduEntries = await getLocalizedCollection('education', lang);
+  const skillEntries = await getLocalizedCollection('skills', lang);
   const skills = skillEntries[0]?.data.items || [];
 
   let md = `# Luis Alberto Reoyo Bolaños\n\n`;

@@ -1,12 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 import { useTranslations } from '#/i18n/utils';
 
 const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
 
-const projEntries = await getCollection('projects', ({ id }) => id.startsWith(lang + '/'));
-projEntries.sort((a, b) => a.data.order - b.data.order);
+const projEntries = await getLocalizedCollection('projects', lang);
 ---
 
 <section class="cv-section">

@@ -25,10 +25,10 @@ const baseUrl = "https://curriculum.genkipool.com";
 const fullImageUrl = new URL(image, baseUrl).toString();
 const jobTitle = lang === 'es' ? "Senior en Seguridad de Redes" : "Network Security Engineer";
 
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 
-const eduEntries = await getCollection('education', ({ id }) => id.startsWith(lang + '/'));
-const skillsEntries = await getCollection('skills', ({ id }) => id.startsWith(lang + '/'));
+const eduEntries = await getLocalizedCollection('education', lang);
+const skillsEntries = await getLocalizedCollection('skills', lang);
 
 const jsonLd = {
   "@context": "https://schema.org",

@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 import { useTranslations } from '#/i18n/utils';
 import cehSvg from '#/assets/badges/ceh.svg';
 import cpphpSvg from '#/assets/badges/hacking_php.svg';
@@ -12,8 +12,7 @@ import dpeSvg from '#/assets/badges/electronica.svg';
 const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
 
-const eduEntries = await getCollection('education', ({ id }) => id.startsWith(lang + '/'));
-eduEntries.sort((a, b) => a.data.order - b.data.order);
+const eduEntries = await getLocalizedCollection('education', lang);
 ---
 
 <section class="cv-section" id="education-section">

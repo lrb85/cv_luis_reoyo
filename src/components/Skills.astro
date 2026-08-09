@@ -1,11 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
+import { getLocalizedCollection } from '#/utils/collections';
 import { useTranslations } from '#/i18n/utils';
 
 const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
 
-const skillEntries = await getCollection('skills', ({ id }) => id.startsWith(lang + '/'));
+const skillEntries = await getLocalizedCollection('skills', lang);
 const skills = skillEntries[0]?.data.items || [];
 ---
 
