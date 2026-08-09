@@ -34,7 +34,11 @@ export const ui = {
     'header.summary': 'Cuento con {years} años de experiencia como técnico de seguridad en telecomunicaciones, especializado en hardening y pentesting de dispositivos de red. Actualmente tengo a disposición los certificados de CCNP Security, CCNP y CEH.',
     'header.btn.copy': 'Copiar Markdown',
     'header.btn.pdf': 'Descargar PDF',
-    'header.btn.theme': 'Cambiar tema',    // Skills
+    'header.btn.theme': 'Cambiar tema',
+    'header.btn.theme.light': 'Cambiar a tema claro',
+    'header.btn.theme.dark': 'Cambiar a tema oscuro',
+    'header.btn.lang.es': 'Ver currículum en Español',
+    'header.btn.lang.en': 'Ver currículum en Inglés',    // Skills
     'skill.lang.level': 'Profesional',
     'skill.eng.level': 'Técnico',
     'skill.driving.level': 'B',
@@ -87,7 +91,11 @@ export const ui = {
     'header.summary': '{years} years of experience as a telecommunications security technician, specialized in hardening and pentesting network devices. Currently holding CCNP Security, CCNP, and CEH certifications.',
     'header.btn.copy': 'Copy Markdown',
     'header.btn.pdf': 'Download PDF',
-    'header.btn.theme': 'Toggle theme',    // Skills
+    'header.btn.theme': 'Toggle theme',
+    'header.btn.theme.light': 'Switch to light theme',
+    'header.btn.theme.dark': 'Switch to dark theme',
+    'header.btn.lang.es': 'View resume in Spanish',
+    'header.btn.lang.en': 'View resume in English',    // Skills
     'skill.lang.level': 'Professional',
     'skill.eng.level': 'Technical',
     'skill.driving.level': 'B',

@@ -22,12 +22,19 @@ const t = useTranslations(lang);
       </div>
 
       <div class="lang-switcher">
-        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'} class={lang === 'es' ? 'active' : ''}>ES</a>
+        <a href={import.meta.env.BASE_URL.replace(/\/$/, '') || '/'} class={lang === 'es' ? 'active' : ''} title={t('header.btn.lang.es')}>ES</a>
         <span class="separator">|</span>
-        <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/en`} class={lang === 'en' ? 'active' : ''}>EN</a>
+        <a href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/en`} class={lang === 'en' ? 'active' : ''} title={t('header.btn.lang.en')}>EN</a>
       </div>
 
-      <button id="theme-toggle" class="theme-btn" aria-label={t('header.btn.theme')} title={t('header.btn.theme')}>
+      <button 
+        id="theme-toggle" 
+        class="theme-btn" 
+        aria-label={t('header.btn.theme')} 
+        title={t('header.btn.theme')}
+        data-title-light={t('header.btn.theme.light')}
+        data-title-dark={t('header.btn.theme.dark')}
+      >
         <Icon name="sun" class="sun-icon" />
         <Icon name="moon" class="moon-icon" />
       </button>
