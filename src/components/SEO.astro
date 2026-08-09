@@ -10,7 +10,7 @@ interface Props {
 const {
   title,
   description = (Astro.currentLocale ?? 'es') === 'es' ? "Currículum Vitae de Luis Reoyo - Senior en Seguridad de Redes." : "Luis Reoyo's Resume - Network Security Engineer.",
-  image = "/og-image.jpg",
+  image = (Astro.currentLocale ?? 'es') === 'es' ? "/og-image.jpg" : "/og-image-en.jpg",
   canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
   type = "website",
 } = Astro.props;
