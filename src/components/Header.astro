@@ -59,9 +59,9 @@ const t = useTranslations(lang);
           </div>
         </div>
       </div>
-      <div class="header-avatar">
+      <a href={lang === 'en' ? '/en/terminal' : '/terminal'} class="header-avatar" title="Foto de perfil">
         <Image src={profileImage} alt="Luis Alberto Reoyo Bolaños" width={180} height={180} />
-      </div>
+      </a>
     </div>
   </div>
 </header>
@@ -173,6 +173,7 @@ const t = useTranslations(lang);
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: default;
   }
 
   .header-avatar img {

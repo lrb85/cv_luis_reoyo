@@ -1,0 +1,362 @@
+---
+import Layout from '#/layouts/Layout.astro';
+
+import type { ui } from '#/i18n/ui';
+
+import { getLocalizedCollection } from '#/utils/collections';
+
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
+const homeUrl = lang === 'es' ? '/' : '/en/';
+
+const eduEntries = await getLocalizedCollection('education', lang);
+const skillsEntries = await getLocalizedCollection('skills', lang);
+
+const certText = eduEntries
+  .filter(e => e.data.badgeClass)
+  .map(e => {
+    const inst = e.data.details.find(d => d.label.includes('Institu'))?.text;
+    return inst ? `- ${e.data.title} (${inst})` : `- ${e.data.title}`;
+  })
+  .join('\n');
+const skillsTextLines = skillsEntries[0]?.data.items
+  .map(s => {
+    const label = s.label1.replace(':', '');
+    const val = s.value1.replace(/<[^>]+>/g, '');
+    const lvl = s.value2;
+    return `[ ${label.padEnd(12, ' ')} ] ${val} (${lvl})`;
+  })
+  .join('\n') || '';
+
+const skillsText = `[+] SYSTEM SKILLS EXTRACTED:\n======================================================\n${skillsTextLines}\n======================================================`;
+
+const isES = lang === 'es';
+const i18nTerminal = {
+  welcome: isES ? "Bienvenido a la Shell Interactiva de Luis Reoyo v1.0.0" : "Welcome to Luis Reoyo's Interactive Shell v1.0.0",
+  helpText: isES ? "Escribe 'help' para ver los comandos." : "Type 'help' to see available commands.",
+  certText: certText || (isES ? 'No hay certificaciones' : 'No certifications found'),
+  skillsText: skillsText || (isES ? 'No hay habilidades' : 'No skills found'),
+  commands: {
+    '?': isES ? 'Comandos: whoami, skills, clear, exit, sudo, download_cv, date, echo, ping, ls, cat, ifconfig, nmap, netstat, traceroute, tcpdump, nc, route, ip, ssh, gobuster, sqlmap, john, hashcat, msfconsole, hydra, scapy, wfuzz, nikto, dirb, linpeas, iptables, nft, ufw, fail2ban-client, apparmor_status, lynis' : 'Commands: whoami, skills, clear, exit, sudo, download_cv, date, echo, ping, ls, cat, ifconfig, nmap, netstat, traceroute, tcpdump, nc, route, ip, ssh, gobuster, sqlmap, john, hashcat, msfconsole, hydra, scapy, wfuzz, nikto, dirb, linpeas, iptables, nft, ufw, fail2ban-client, apparmor_status, lynis',
+    'help': isES ? 'Comandos: whoami, skills, clear, exit, sudo, download_cv, date, echo, ping, ls, cat, ifconfig, nmap, netstat, traceroute, tcpdump, nc, route, ip, ssh, gobuster, sqlmap, john, hashcat, msfconsole, hydra, scapy, wfuzz, nikto, dirb, linpeas, iptables, nft, ufw, fail2ban-client, apparmor_status, lynis' : 'Commands: whoami, skills, clear, exit, sudo, download_cv, date, echo, ping, ls, cat, ifconfig, nmap, netstat, traceroute, tcpdump, nc, route, ip, ssh, gobuster, sqlmap, john, hashcat, msfconsole, hydra, scapy, wfuzz, nikto, dirb, linpeas, iptables, nft, ufw, fail2ban-client, apparmor_status, lynis',
+    'whoami': isES ? 'Eres un reclutador o un desarrollador muy curioso. ¡Bienvenido!' : 'You are a recruiter or a very curious developer. Welcome!',
+    'skills': skillsText || (isES ? 'No hay habilidades' : 'No skills found'),
+    'clear': 'CLEAR_CMD',
+    'exit': 'EXIT_CMD',
+    'sudo': isES ? 'kali no está en el archivo sudoers. Este incidente será reportado a Luis.' : 'kali is not in the sudoers file. This incident will be reported to Luis.',
+    'download_cv': isES ? 'Iniciando descarga del CV...' : 'Initializing CV download...',
+    'ping': 'PONG!',
+    'date': '',
+    'echo': '',
+    'ls': 'certifications.txt  skills.md  cv.pdf',
+    'cat': '',
+    'ifconfig': 'eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500\n        inet 192.168.1.104  netmask 255.255.255.0  broadcast 192.168.1.255\n        inet6 fe80::a00:27ff:fe4e:66a  prefixlen 64  scopeid 0x20<link>\n        ether 08:00:27:4e:06:6a  txqueuelen 1000  (Ethernet)',
+    'nmap': 'Starting Nmap 7.93 ( https://nmap.org )\nNmap scan report for localhost (127.0.0.1)\nHost is up (0.000013s latency).\nNot shown: 997 closed tcp ports\nPORT    STATE SERVICE\n22/tcp  open  ssh\n80/tcp  open  http\n443/tcp open  https\n\nNmap done: 1 IP address (1 host up) scanned in 0.04 seconds',
+    'netstat': 'Active Internet connections (w/o servers)\nProto Recv-Q Send-Q Local Address           Foreign Address         State      \ntcp        0      0 192.168.1.104:443       10.0.0.5:54321          ESTABLISHED\ntcp        0      0 192.168.1.104:22        192.168.1.50:60123      ESTABLISHED',
+    'traceroute': 'traceroute to genkipool.com (104.21.5.14), 30 hops max, 60 byte packets\n 1  192.168.1.1 (192.168.1.1)  0.214 ms  0.198 ms  0.176 ms\n 2  10.0.0.1 (10.0.0.1)  2.413 ms  2.381 ms  2.245 ms\n 3  * * *\n 4  104.21.5.14 (104.21.5.14)  12.441 ms  12.310 ms  12.189 ms',
+    'tcpdump': 'tcpdump: verbose output suppressed, use -v[v]... for full protocol decode\nlistening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes\n14:02:45.123456 IP 192.168.1.104.443 > 10.0.0.5.54321: Flags [P.], seq 1:10, ack 1, win 502, options [nop,nop,TS val 123 ecr 456], length 9\n14:02:45.123500 IP 10.0.0.5.54321 > 192.168.1.104.443: Flags [.], ack 10, win 501, options [nop,nop,TS val 456 ecr 123], length 0',
+    'nc': 'usage: nc [-46DdhklnrStUuvzC] [-i interval] [-P proxy_username] [-p source_port]\n          [-s source_ip_address] [-T ToS] [-w timeout] [-X proxy_protocol]\n          [-x proxy_address[:port]] [hostname] [port[s]]',
+    'route -n': 'Kernel IP routing table\nDestination     Gateway         Genmask         Flags Metric Ref    Use Iface\n0.0.0.0         192.168.1.1     0.0.0.0         UG    100    0        0 eth0\n192.168.1.0     0.0.0.0         255.255.255.0   U     100    0        0 eth0',
+    'ip route get 192.168.1.1': '192.168.1.1 dev eth0 src 192.168.1.104 uid 1000 \n    cache',
+    'ssh': 'usage: ssh [-46AaCfGgKkMNnqsTtVvXxYy] [-B bind_interface]\n           [-b bind_address] [-c cipher_spec] [-D [bind_address:]port]\n           [-E log_file] [-e escape_char] [-F configfile] [-I pkcs11]\n           [-i identity_file] [-J [user@]host[:port]] [-L address]\n           [-l login_name] [-m mac_spec] [-O ctl_cmd] [-o option] [-p port]\n           [-Q query_option] [-R address] [-S ctl_path] [-W host:port]\n           [-w local_tun[:remote_tun]] destination [command [argument ...]]',
+    'gobuster': 'Usage:\n  gobuster [command]\n\nAvailable Commands:\n  dir         Uses directory/file enumeration mode\n  dns         Uses DNS subdomain enumeration mode\n  fuzz        Uses fuzzing mode',
+    'sqlmap': '        ___\n       __H__\n ___ ___[,]_____ ___ ___  {1.7.2#stable}\n|_ -| . ["]     | .\'| . |\n|___|_  ["]_|_|_|__,|  _|\n      |_|V...       |_|   https://sqlmap.org\n\nUsage: python3 sqlmap.py [options]',
+    'john': 'John the Ripper 1.9.0-jumbo-1 OMP [linux-gnu 64-bit x86_64 AVX2 AC]\nCopyright (c) 1996-2019 by Solar Designer and others\nWrite cracks to $JOHN/john.pot',
+    'hashcat': 'hashcat (v6.2.6) starting\n\nUsage: hashcat [options]... hash|hashfile|hccapxfile [dictionary|mask|directory]...',
+    'msfconsole': '       =[ metasploit v6.3.5-dev                           ]\n+ -- --=[ 2294 exploits - 1201 auxiliary - 409 post       ]\n+ -- --=[ 968 payloads - 45 encoders - 11 nops            ]\n+ -- --=[ 9 evasion                                       ]\n\nMetasploit tip: Use the search command to find exploits',
+    'hydra': 'Hydra v9.5 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).\n\nSyntax: hydra [[[-l LOGIN|-L FILE] [-p PASS|-P FILE]] | [-C FILE]] [-e nsr] [-o FILE] [-t TASKS] [-M FILE [-T TASKS]] [-w TIME] [-W TIME] [-f] [-s PORT] [-x MIN:MAX:CHARSET] [-c TIME] [-I] [-q] [-vV] [-d] [-m MODULE_OPT] server service [OPT]',
+    'scapy': '                     aSPY//YASa       \n             apyyyyCY//////////YCa       |\n            sY//////YSpcs  scpCY//Pt     | Welcome to Scapy\n ayp ayyyyyyySCP//Pt           AW//Wt    | Version 2.5.0\n ayyyyyyy//////////ws        awR//pt     |\n y//////////yyyy/////////////Rs      \n>>>',
+    'wfuzz': '********************************************************\n* Wfuzz 3.1.0 - The Web Fuzzer                         *\n********************************************************\n\nUsage: wfuzz [options] -z payload,params <url>',
+    'nikto': '- Nikto v2.1.6\n---------------------------------------------------------------------------\n+ ERROR: No host specified',
+    'dirb': '-----------------\nDIRB v2.22    \nBy The Dark Raver\n-----------------\n\nDIRB is a Web Content Scanner. It looks for existing (and/or hidden) Web Objects.',
+    'linpeas': '     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄\n LinPEAS - Linux Privilege Escalation Awesome Script\n',
+    'iptables': 'iptables v1.8.7 (nf_tables): no command specified\nTry `iptables -h\' or \'iptables --help\' for more information.',
+    'iptables -l': 'Chain INPUT (policy DROP)\ntarget     prot opt source               destination         \nACCEPT     all  --  anywhere             anywhere             state RELATED,ESTABLISHED\nACCEPT     tcp  --  anywhere             anywhere             tcp dpt:ssh\n\nChain FORWARD (policy DROP)\ntarget     prot opt source               destination         \n\nChain OUTPUT (policy ACCEPT)\ntarget     prot opt source               destination',
+    'nft': 'Usage: nft [ options ] [ cmds... ]\n\nOptions:\n  -h, --help\t\t\tShow this help',
+    'nft list ruleset': 'table inet filter {\n\tchain input {\n\t\ttype filter hook input priority filter; policy drop;\n\t\tct state established,related accept\n\t\tiif "lo" accept\n\t\ttcp dport { 22, 80, 443 } accept\n\t}\n\tchain forward {\n\t\ttype filter hook forward priority filter; policy drop;\n\t}\n\tchain output {\n\t\ttype filter hook output priority filter; policy accept;\n\t}\n}',
+    'ufw': 'ufw: Usage: ufw COMMAND\n\nCommands:\n enable                          enables the firewall\n disable                         disables the firewall\n default ARG                     set default policy\n status                          show firewall status',
+    'ufw status': 'Status: active\n\nTo                         Action      From\n--                         ------      ----\n22/tcp                     ALLOW       Anywhere                  \n80/tcp                     ALLOW       Anywhere                  \n443/tcp                    ALLOW       Anywhere',
+    'fail2ban-client': 'Usage: fail2ban-client [OPTIONS] <COMMAND>\n\nfail2ban-client reads the configuration files and sends the commands to the server',
+    'fail2ban-client status': 'Status\n|- Number of jail:\t1\n`- Jail list:\tsshd',
+    'apparmor_status': 'apparmor module is loaded.\n27 profiles are loaded.\n25 profiles are in enforce mode.\n2 profiles are in complain mode.\n0 processes have profiles defined.',
+    'lynis': 'Lynis 3.0.8\n\nUsage: lynis command [options]\n\nCommands:\n  audit system                  - Performs a local security scan\n  show                          - Show various details',
+    'lynis audit system': '[+] System Hardening Index: 85 [==========        ]\n[-] Hardening index needs improvement.\n\nLynis scan completed. Check /var/log/lynis-report.dat for details.'
+  },
+  notFound: isES ? 'bash: {cmd}: orden no encontrada' : 'bash: {cmd}: command not found'
+};
+---
+
+<Layout title="Terminal - Luis Reoyo">
+  <div class="terminal-container">
+    <div class="terminal-card fullscreen">
+      <div class="terminal-header">
+        <span class="term-title" style="text-align: left; padding-left: 10px;">kali@linux:~</span>
+        <div class="dots" style="position: absolute; right: 15px; display: flex; gap: 8px;">
+          <span class="dot" style="background:#555; display:flex; align-items:center; justify-content:center; color:#ccc; font-size:10px; font-weight:bold;">_</span>
+          <span class="dot" style="background:#555; display:flex; align-items:center; justify-content:center; color:#ccc; font-size:10px; font-weight:bold;">□</span>
+          <a href={homeUrl} class="dot dot-red" id="close-term" style="background:#cc0000; text-decoration:none; display:flex; align-items:center; justify-content:center; color:#fff; font-size:10px; font-weight:bold; line-height:1;">&times;</a>
+        </div>
+      </div>
+      <div class="terminal-body" id="term-body">
+        <p class="output desc">{i18nTerminal.welcome}</p>
+        <p class="output desc">{i18nTerminal.helpText}</p>
+        <br/>
+        <div id="term-output"></div>
+        <form id="term-form" class="cmd" style="display: flex; gap: 8px;">
+          <span class="prompt">kali@linux:~$</span>
+          <input type="text" id="term-input" autocomplete="off" spellcheck="false" style="background: transparent; border: none; color: inherit; font-family: inherit; font-size: inherit; outline: none; width: 100%;" autofocus />
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script define:vars={{ i18nTerminal, homeUrl }}>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById('term-form');
+      const input = document.getElementById('term-input');
+      const output = document.getElementById('term-output');
+      const body = document.getElementById('term-body');
+      // El botón close-term ya navega usando su atributo href
+      
+      if (!form || !input || !output) return;
+      if (form.dataset.loaded) return;
+      form.dataset.loaded = 'true';
+
+      const cmds = Object.keys(i18nTerminal.commands).filter(c => c !== '?');
+      const files = ['certifications.txt', 'skills.md', 'cv.pdf'];
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+          e.preventDefault();
+          const val = input.value;
+          const lowerVal = val.toLowerCase();
+          
+          if (lowerVal.startsWith('cat ')) {
+            const arg = lowerVal.substring(4);
+            const match = files.find(f => f.startsWith(arg));
+            if (match) input.value = val.substring(0, 4) + match;
+          } else if (lowerVal.startsWith('ls ')) {
+            const arg = lowerVal.substring(3);
+            const match = files.find(f => f.startsWith(arg));
+            if (match) input.value = val.substring(0, 3) + match;
+          } else {
+            const match = cmds.find(c => c.startsWith(lowerVal));
+            if (match) input.value = match;
+          }
+        }
+      });
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const val = input.value.trim();
+        const lowerValFull = val.toLowerCase();
+        const lowerVal = lowerValFull.split(' ')[0]; // base command
+        if (!val) return;
+
+        const cmdLine = document.createElement('p');
+        cmdLine.className = 'cmd';
+        cmdLine.innerHTML = `<span class="prompt">kali@linux:~$</span> ${val}`;
+        output.appendChild(cmdLine);
+
+        const resLine = document.createElement('div');
+        resLine.className = 'output desc';
+        
+        if (lowerVal === 'clear') {
+          output.innerHTML = '';
+          input.value = '';
+          return;
+        }
+        
+        if (lowerVal === 'exit') {
+          window.location.href = homeUrl;
+          return;
+        }
+
+        if (lowerVal === 'echo') {
+          resLine.innerText = val.substring(4).trim();
+          output.appendChild(resLine);
+          input.value = '';
+          if(body) body.scrollTop = body.scrollHeight;
+          return;
+        }
+
+        if (lowerVal === 'cat') {
+          const arg = val.substring(4).trim();
+          if (!arg) {
+            resLine.innerText = 'cat: missing operand';
+          } else if (arg === 'certifications.txt') {
+            resLine.innerText = i18nTerminal.certText;
+          } else if (arg === 'skills.md') {
+            resLine.innerText = i18nTerminal.skillsText;
+          } else if (arg === 'cv.pdf') {
+            resLine.innerText = 'Error: Cannot display binary file. Use download_cv instead.';
+          } else {
+            resLine.innerText = `cat: ${arg}: No such file or directory`;
+          }
+          output.appendChild(resLine);
+          input.value = '';
+          if(body) body.scrollTop = body.scrollHeight;
+          return;
+        }
+        
+        if (lowerVal === 'date') {
+          resLine.innerText = new Date().toString();
+          output.appendChild(resLine);
+          input.value = '';
+          if(body) body.scrollTop = body.scrollHeight;
+          return;
+        }
+
+        if (i18nTerminal.commands[lowerValFull]) {
+          resLine.innerText = i18nTerminal.commands[lowerValFull];
+          if (lowerValFull === 'download_cv') {
+            setTimeout(() => { window.location.href = '/?print=true'; }, 1000);
+          }
+        } else if (i18nTerminal.commands[lowerVal]) {
+          resLine.innerText = i18nTerminal.commands[lowerVal];
+          if (lowerVal === 'download_cv') {
+            setTimeout(() => { window.location.href = '/?print=true'; }, 1000);
+          }
+        } else {
+          resLine.innerText = i18nTerminal.notFound.replace('{cmd}', lowerVal);
+        }
+        
+        output.appendChild(resLine);
+        input.value = '';
+        if(body) body.scrollTop = body.scrollHeight;
+      });
+      
+      // Auto-focus on click
+      document.querySelector('.terminal-card')?.addEventListener('click', () => {
+        input.focus();
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  :root {
+    --term-red: #ff5f56;
+    --term-yellow: #ffbd2e;
+    --term-green: #27c93f;
+    --term-bg-dark: rgba(10, 15, 25, 0.95);
+    --term-bg-light: rgba(240, 240, 240, 0.95);
+  }
+
+  .terminal-container {
+    height: calc(100vh - 80px);
+    display: flex;
+    padding: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .terminal-card.fullscreen {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #111111;
+    border: 1px solid #333;
+    border-radius: 6px 6px 0 0;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  .terminal-header {
+    background: #2d2d2d;
+    padding: 8px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #1a1a1a;
+    position: relative;
+  }
+  
+  .dots {
+    display: flex;
+    gap: 8px;
+    position: absolute;
+  }
+
+  .dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .dot:hover {
+    transform: scale(1.2);
+  }
+
+  .dot-red { background: var(--term-red); }
+  .dot-yellow { background: var(--term-yellow); }
+  .dot-green { background: var(--term-green); }
+
+  .term-title {
+    flex: 1;
+    text-align: center;
+    font-family: monospace;
+    font-size: 0.95rem;
+    color: #dfdfdf;
+  }
+  
+  :root[data-theme="light"] .term-title {
+    color: #333;
+  }
+
+  .terminal-body {
+    padding: 25px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 1.1rem;
+    flex: 1;
+    overflow-y: auto;
+    color: #f1f1f1;
+  }
+
+  :root[data-theme="light"] .terminal-body {
+    color: #222;
+  }
+
+  .cmd {
+    margin-bottom: 12px;
+  }
+
+  .prompt {
+    color: #268bd2;
+    font-weight: 600;
+  }
+  
+  .output {
+    margin-bottom: 15px;
+    line-height: 1.6;
+    white-space: pre-wrap;
+  }
+
+  .output.desc {
+    color: #cccccc;
+  }
+  
+  :root[data-theme="light"] .output.desc {
+    color: #555;
+  }
+
+  :root[data-theme="light"] .terminal-card.fullscreen {
+    background: #f7f7f7;
+    border: 1px solid #ccc;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  :root[data-theme="light"] .terminal-header {
+    background: #e2e2e2;
+    border-bottom: 1px solid #d0d0d0;
+  }
+
+  :root[data-theme="light"] .dot {
+    background: #aaa !important;
+    color: #fff !important;
+  }
+  
+  :root[data-theme="light"] .dot.dot-red {
+    background: #cc0000 !important;
+  }
+</style>

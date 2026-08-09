@@ -9,8 +9,8 @@ interface Props {
 
 const {
   title,
-  description = (Astro.currentLocale ?? 'es') === 'es' ? "Currículum Vitae de Luis Reoyo - Senior en Seguridad de Redes." : "Luis Reoyo's Resume - Network Security Engineer.",
-  image = (Astro.currentLocale ?? 'es') === 'es' ? "/og-image.jpg" : "/og-image-en.jpg",
+  description = (Astro.currentLocale ?? 'es') === 'es' ? "Currículum Vitae de Luis Reoyo - Senior en Seguridad de Redes." : "Luis Reoyo's Resume - Senior in Network Security.",
+  image = `/og-${Astro.currentLocale ?? 'es'}.png`,
   canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
   type = "website",
 } = Astro.props;
@@ -23,7 +23,7 @@ const defaultThemeColor = "#1e2d3d";
 const canonicalStr = typeof canonicalURL === 'string' ? canonicalURL : canonicalURL.toString();
 const baseUrl = "https://curriculum.genkipool.com";
 const fullImageUrl = new URL(image, baseUrl).toString();
-const jobTitle = lang === 'es' ? "Senior en Seguridad de Redes" : "Network Security Engineer";
+const jobTitle = lang === 'es' ? "Senior en Seguridad de Redes" : "Senior in Network Security";
 
 import { getLocalizedCollection } from '#/utils/collections';
 

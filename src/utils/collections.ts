@@ -4,8 +4,8 @@ export async function getLocalizedCollection<C extends CollectionKey>(collection
   const entries = await getCollection(collectionName, ({ id }) => id.startsWith(lang + '/'));
   
   entries.sort((a, b) => {
-    const orderA = (a.data as any).order ?? 0;
-    const orderB = (b.data as any).order ?? 0;
+    const orderA = (a.data as Record<string, unknown>).order as number ?? 0;
+    const orderB = (b.data as Record<string, unknown>).order as number ?? 0;
     return orderA - orderB;
   });
   

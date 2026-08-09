@@ -1,0 +1,315 @@
+---
+import Layout from '#/layouts/Layout.astro';
+import { useTranslations } from '#/i18n/utils';
+import type { ui } from '#/i18n/ui';
+
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
+const t = useTranslations(lang);
+---
+
+<Layout title={t('error.404.title')}>
+  <div class="error-container">
+    <div class="glitch-wrapper">
+      <h1 class="glitch" data-text="404">404</h1>
+    </div>
+    
+    <div class="terminal-card">
+      <div class="terminal-header">
+        <div class="dots" style="display:flex; gap:8px;">
+          <a href="/" class="dot dot-red" style="text-decoration:none; display:flex; align-items:center; justify-content:center; color:#500; font-size:10px; font-weight:bold; line-height:1;">&times;</a>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="term-title">sys_err.sh</span>
+      </div>
+      <div class="terminal-body">
+        <p class="cmd"><span class="prompt">root@network:~$</span> ./locate_payload.sh</p>
+        <p class="output output-error">[{t('error.404.code')}] {t('error.404.msg')}</p>
+        <p class="output desc">{t('error.404.desc')}</p>
+        <div id="term-output"></div>
+        <form id="term-form" class="cmd" style="display: flex; gap: 8px;">
+          <span class="prompt">root@network:~$</span>
+          <input type="text" id="term-input" autocomplete="off" spellcheck="false" style="background: transparent; border: none; color: inherit; font-family: inherit; font-size: inherit; outline: none; width: 100%;" autofocus />
+        </form>
+      </div>
+    </div>
+    
+    <a href="/" class="cyber-btn">{t('error.404.btn')}</a>
+  </div>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const form = document.getElementById('term-form');
+      const input = document.getElementById('term-input');
+      const output = document.getElementById('term-output');
+      
+      if (!form || !input || !output) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const val = input.value.trim().toLowerCase();
+        if (!val) return;
+
+        const cmdLine = document.createElement('p');
+        cmdLine.className = 'cmd';
+        cmdLine.innerHTML = `<span class="prompt">root@network:~$</span> ${val}`;
+        output.appendChild(cmdLine);
+
+        const resLine = document.createElement('p');
+        resLine.className = 'output desc';
+        
+        switch (val) {
+          case '?':
+          case 'help':
+            resLine.innerText = 'Available commands: whoami, clear, ls, cd ..';
+            break;
+          case 'whoami':
+            resLine.innerText = 'guest_user';
+            break;
+          case 'clear':
+            output.innerHTML = '';
+            input.value = '';
+            return;
+          case 'ls':
+            resLine.innerText = 'locate_payload.sh  sys_err.sh';
+            break;
+          case 'cd ..':
+            window.location.href = '/';
+            return;
+          case 'sudo':
+            resLine.innerText = 'luis is not in the sudoers file. This incident will be reported.';
+            break;
+          default:
+            resLine.innerText = `bash: ${val}: command not found`;
+        }
+        
+        output.appendChild(resLine);
+        input.value = '';
+        input.scrollIntoView();
+      });
+      
+      // Auto-focus on click
+      document.querySelector('.terminal-card')?.addEventListener('click', () => {
+        input.focus();
+      });
+    });
+  </script>
+</Layout>
+
+<style>
+  :root {
+    --term-red: #ff5f56;
+    --term-yellow: #ffbd2e;
+    --term-green: #27c93f;
+    --term-bg-dark: rgba(15, 23, 42, 0.7);
+    --term-bg-light: rgba(255, 255, 255, 0.8);
+    --glitch-color-1: #ff00c1;
+    --glitch-color-2: #00fff9;
+  }
+
+  .error-container {
+    min-height: calc(100vh - 200px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+
+  .glitch-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .glitch {
+    font-size: 8rem;
+    font-weight: 700;
+    line-height: 1;
+    font-family: 'Rajdhani', sans-serif;
+    color: var(--text-main);
+    position: relative;
+    text-shadow: 0 0 10px rgba(93, 184, 232, 0.3);
+  }
+  
+  .glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+  
+  .glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--glitch-color-1);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+  }
+  
+  .glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--glitch-color-2);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+  }
+
+  @keyframes glitch-anim {
+    0% { clip: rect(21px, 9999px, 86px, 0); }
+    20% { clip: rect(62px, 9999px, 20px, 0); }
+    40% { clip: rect(8px, 9999px, 83px, 0); }
+    60% { clip: rect(93px, 9999px, 41px, 0); }
+    80% { clip: rect(31px, 9999px, 14px, 0); }
+    100% { clip: rect(54px, 9999px, 95px, 0); }
+  }
+
+  @keyframes glitch-anim2 {
+    0% { clip: rect(12px, 9999px, 59px, 0); }
+    20% { clip: rect(84px, 9999px, 32px, 0); }
+    40% { clip: rect(23px, 9999px, 91px, 0); }
+    60% { clip: rect(68px, 9999px, 16px, 0); }
+    80% { clip: rect(45px, 9999px, 73px, 0); }
+    100% { clip: rect(96px, 9999px, 48px, 0); }
+  }
+
+  .terminal-card {
+    width: 100%;
+    max-width: 600px;
+    background: var(--term-bg-dark);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(93, 184, 232, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(93, 184, 232, 0.1);
+    margin-bottom: 3rem;
+  }
+
+  :root[data-theme="light"] .terminal-card {
+    background: var(--term-bg-light);
+    border: 1px solid var(--border-main);
+    box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+  }
+
+  .terminal-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  :root[data-theme="light"] .terminal-header {
+    background: rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot-red { background: var(--term-red); }
+  .dot-yellow { background: var(--term-yellow); }
+  .dot-green { background: var(--term-green); }
+
+  .term-title {
+    margin-left: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+  }
+
+  .terminal-body {
+    padding: 20px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    font-size: 0.95rem;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .cmd {
+    margin-bottom: 10px;
+    color: var(--text-main);
+  }
+
+  .prompt {
+    color: var(--term-green);
+    font-weight: 600;
+  }
+  
+  :root[data-theme="light"] .prompt {
+    color: #16a34a; /* slightly darker green for light theme readability */
+  }
+
+  .output {
+    margin-bottom: 15px;
+    line-height: 1.5;
+  }
+
+  .output-error {
+    color: var(--term-red);
+    font-weight: bold;
+  }
+
+  .output.desc {
+    color: var(--text-sub);
+  }
+
+  .blink {
+    animation: blinker 1s linear infinite;
+  }
+
+  @keyframes blinker {
+    50% { opacity: 0; }
+  }
+
+  .cyber-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: transparent;
+    color: var(--blue-bright);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    border: 1px solid var(--blue-accent);
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(93, 184, 232, 0.2);
+  }
+
+  .cyber-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(93, 184, 232, 0.2), transparent);
+    transition: all 0.5s ease;
+  }
+
+  .cyber-btn:hover {
+    background: rgba(93, 184, 232, 0.1);
+    box-shadow: 0 0 20px rgba(93, 184, 232, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .cyber-btn:hover::before {
+    left: 100%;
+  }
+
+  @media (max-width: 480px) {
+    .glitch { font-size: 5rem; }
+    .terminal-body { font-size: 0.85rem; }
+    .error-container { padding: 1rem; }
+  }
+</style>

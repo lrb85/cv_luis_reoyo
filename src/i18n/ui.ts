@@ -40,6 +40,20 @@ export const ui = {
     'skill.eng.level': 'Técnico',
     'skill.driving.level': 'B',
     'footer.copy': '© 2026 Luis Reoyo. Todos los derechos reservados.',
+    
+    // Error 404
+    'error.404.title': '404 - BRECHA DEL SISTEMA',
+    'error.404.code': 'ERR_404',
+    'error.404.msg': 'OBJETIVO_NO_ENCONTRADO',
+    'error.404.desc': 'El payload solicitado no se pudo localizar en este servidor. Acceso denegado o ruta corrupta.',
+    'error.404.btn': 'VOLVER_A_LA_BASE',
+    
+    // Error 500
+    'error.500.title': '500 - FALLO CRÍTICO',
+    'error.500.code': 'ERR_500',
+    'error.500.msg': 'PANICO_NUCLEO_SERVIDOR',
+    'error.500.desc': 'Error interno del servidor detectado. El mainframe está experimentando un fallo crítico. Intentando auto-recuperación...',
+    'error.500.btn': 'REINICIAR_CONEXION',
   },
   en: {
     'nav.experience': 'Professional Experience',
@@ -70,7 +84,7 @@ export const ui = {
     'label.currently': 'Present',
 
     // Header
-    'header.job': 'Network Security Engineer | Telco & Hardening Specialist',
+    'header.job': 'Senior in Network Security | Telco & Hardening Specialist',
     'header.summary': '{years} years of experience as a telecommunications security technician, specialized in hardening and pentesting network devices. Currently holding CCNP Security, CCNP, and CEH certifications.',
 
     // Skills
@@ -78,5 +92,19 @@ export const ui = {
     'skill.eng.level': 'Technical',
     'skill.driving.level': 'B',
     'footer.copy': '© 2026 Luis Reoyo. All rights reserved.',
+    
+    // Error 404
+    'error.404.title': '404 - SYSTEM OVERRIDE',
+    'error.404.code': 'ERR_404',
+    'error.404.msg': 'TARGET_NOT_FOUND',
+    'error.404.desc': 'The requested payload could not be located on this server. Access denied or pathway corrupted.',
+    'error.404.btn': 'RETURN_TO_BASE',
+    
+    // Error 500
+    'error.500.title': '500 - CRITICAL FAILURE',
+    'error.500.code': 'ERR_500',
+    'error.500.msg': 'SERVER_CORE_PANIC',
+    'error.500.desc': 'Internal server error detected. The mainframe is experiencing a critical failure. Attempting auto-recovery...',
+    'error.500.btn': 'REBOOT_CONNECTION',
   },
 } as const;
