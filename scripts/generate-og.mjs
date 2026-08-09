@@ -9,7 +9,7 @@ async function generateOG(lang) {
   const fontData = await fontDataReq.arrayBuffer();
 
   const title = "Luis Reoyo Bolaños";
-  const subtitle = lang === 'es' ? "Senior en Seguridad de Redes | Especialista en Telco y Hardening" : "Network Security Engineer | Telco & Hardening Specialist";
+  const subtitle = lang === 'es' ? "Senior en Seguridad de Redes | Telco y Hardening" : "Network Security Engineer | Telco & Hardening";
   const desc = lang === 'es' 
     ? "Analista de Ciberseguridad con sólida experiencia en la gestión y análisis de vulnerabilidades en infraestructuras críticas y tecnología blockchain."
     : "Cybersecurity Analyst with solid experience in vulnerability management and analysis in critical infrastructures and blockchain technology.";
