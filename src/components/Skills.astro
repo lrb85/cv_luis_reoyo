@@ -1,37 +1,23 @@
 ---
+import { getCollection } from 'astro:content';
 import { useTranslations } from '#/i18n/utils';
 
-const { lang } = Astro.props;
+const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
+
+const skillEntries = await getCollection('skills', ({ id }) => id.startsWith(lang + '/'));
+const skills = skillEntries[0]?.data.items || [];
 ---
 
 <section class="cv-section skills-section">
   <h2 class="section-title">{t('nav.skills')}</h2>
   <div class="skills-grid">
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.prog_lang')}</span> <span class="skill-value">{lang === 'es' ? 'Python y PHP.' : 'Python & PHP.'}</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.system')}</span> <span class="skill-value">Linux.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.networking')}</span> <span class="skill-value">Cisco & Juniper.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.language')}</span> <span class="skill-value">{lang === 'es' ? 'Inglés' : 'English'}.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.eng.level')}.</span></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.carnet')}</span> <span class="skill-value">{lang === 'es' ? 'Conducir' : 'Driving'}.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.carnet_type')}</span> <span class="skill-value">{t('skill.driving.level')}.</span></div>
-    </div>
-    <div class="skill-item">
-      <div class="skill-row"><span class="skill-label">{t('label.tools')}</span> <span class="skill-value"><span class="hide-mobile">Metasploit, </span>Nmap<span class="hide-mobile">, Scapy, GNS3</span>.</span></div>
-      <div class="skill-row"><span class="skill-label">{t('label.level')}</span> <span class="skill-value">{t('skill.lang.level')}.</span></div>
-    </div>
+    {skills.map(skill => (
+      <div class="skill-item">
+        <div class="skill-row"><span class="skill-label">{skill.label1}</span> <span class="skill-value" set:html={skill.value1} /></div>
+        <div class="skill-row"><span class="skill-label">{skill.label2}</span> <span class="skill-value">{skill.value2}</span></div>
+      </div>
+    ))}
   </div>
 </section>
 

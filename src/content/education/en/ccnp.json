@@ -1,0 +1,22 @@
+{
+  "order": 3,
+  "categoryLabel": "Degree:",
+  "title": "CCNP (Cisco Certified Network Professional)",
+  "details": [
+    {
+      "label": "Institution:",
+      "text": "Cisco Systems Inc"
+    },
+    {
+      "label": "Center:",
+      "text": "CBCenter Training S.L."
+    },
+    {
+      "label": "Verification:",
+      "text": "K1F43XVF1LQQ109Y",
+      "url": "https://cp.certmetrics.com/cisco/en/public/verify/credential/K1F43XVF1LQQ109Y"
+    }
+  ],
+  "badge": "CCNP",
+  "badgeClass": "ccnp2"
+}

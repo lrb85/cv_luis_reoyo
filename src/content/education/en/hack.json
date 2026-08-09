@@ -1,0 +1,17 @@
+{
+  "order": 6,
+  "categoryLabel": "Degree:",
+  "title": "Ethical Hacking (56 hours)",
+  "details": [
+    {
+      "label": "Course:",
+      "text": "Ethical Hacking (56 hours)"
+    },
+    {
+      "label": "Center:",
+      "text": "Securízame"
+    }
+  ],
+  "badge": "HACK",
+  "badgeClass": "hack"
+}

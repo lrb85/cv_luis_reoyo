@@ -1,0 +1,17 @@
+{
+  "order": 5,
+  "categoryLabel": "Degree:",
+  "title": "Professional PHP Hacking Certificate (100 hours)",
+  "details": [
+    {
+      "label": "Course:",
+      "text": "Hacking with PHP (100 hours)"
+    },
+    {
+      "label": "Center:",
+      "text": "The Security Sentinel"
+    }
+  ],
+  "badge": "CPPHP",
+  "badgeClass": "cpphp"
+}

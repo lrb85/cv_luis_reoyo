@@ -1,0 +1,18 @@
+{
+  "order": 2,
+  "categoryLabel": "Project:",
+  "title": "Intelligent Workspace (Chrome Extension)",
+  "links": [
+    {
+      "label": "Status:",
+      "text": "In development (Beta Phase)"
+    }
+  ],
+  "descriptionLabel": "Description:",
+  "description": "Advanced productivity extension for Chromium browsers focused on workflow optimization through intelligent resource management and AI assistance, built with <strong>TypeScript</strong>, <strong>Svelte</strong>, and <strong>JavaScript</strong>.",
+  "functions": [
+    "<strong>Smart Tabs:</strong> Automatic grouping system by domains, subdomains, and customizable dynamic rules with session persistence and advanced search.",
+    "<strong>AI Assistant:</strong> Google Gemini integration for content summaries, contextual chat in a dedicated side panel, and scheduled automated queries.",
+    "<strong>Tools:</strong> Bookmark management, advanced history, cookie editor, text expansion (snippets), screenshots, and keyboard accessibility utilities."
+  ]
+}

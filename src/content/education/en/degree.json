@@ -1,0 +1,17 @@
+{
+  "order": 7,
+  "categoryLabel": "Degree:",
+  "title": "Higher Technician in Electronic Product Development",
+  "details": [
+    {
+      "label": "Course:",
+      "text": "Higher Degree"
+    },
+    {
+      "label": "Center:",
+      "text": "I.E.S. Juan de la Cierva"
+    }
+  ],
+  "badge": "DPE",
+  "badgeClass": "dpe"
+}

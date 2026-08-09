@@ -1,15 +1,14 @@
 ---
 interface Props {
   title: string;
-  lang?: string;
 }
 import { ClientRouter } from 'astro:transitions';
-import { useTranslations, getLangFromUrl } from '#/i18n/utils';
+import { useTranslations } from '#/i18n/utils';
 import SEO from '../components/SEO.astro';
 
 const { title } = Astro.props;
-const lang = Astro.props.lang || getLangFromUrl(Astro.url);
-const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof import('#/i18n/ui').ui;
+const t = useTranslations(lang);
 ---
 <!DOCTYPE html>
 <html lang={lang}>
@@ -65,6 +64,28 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
       const pdfBtn = document.getElementById('download-pdf');
       if (pdfBtn) {
         pdfBtn.addEventListener('click', () => window.print());
+      }
+
+      const copyMdBtn = document.getElementById('copy-markdown');
+      if (copyMdBtn) {
+        copyMdBtn.addEventListener('click', async () => {
+          try {
+            const lang = document.documentElement.lang || 'es';
+            const endpoint = lang === 'en' ? '/en/cv.md' : '/cv.md';
+            const res = await fetch(endpoint);
+            if (!res.ok) throw new Error('Failed to fetch Markdown');
+            const md = await res.text();
+            await navigator.clipboard.writeText(md);
+            // Flash some UI change if needed, or just change icon temporarily
+            const originalHTML = copyMdBtn.innerHTML;
+            copyMdBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+            setTimeout(() => {
+              copyMdBtn.innerHTML = originalHTML;
+            }, 2000);
+          } catch (err) {
+            console.error('Error copying markdown:', err);
+          }
+        });
       }
     });
   </script>
@@ -208,6 +229,11 @@ const t = useTranslations(lang as keyof typeof import('#/i18n/ui').ui);
     align-items: center;
     justify-content: center;
     transition: all 0.3s;
+  }
+
+  .top-actions {
+    display: flex;
+    gap: 8px;
   }
 
   .theme-btn:hover {

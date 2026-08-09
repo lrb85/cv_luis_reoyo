@@ -1,0 +1,15 @@
+{
+  "order": 4,
+  "title": "IP and Mobile Network Security and Hardening Specialist",
+  "companyLabel": "Company:",
+  "company": "Capgemini Engineering (formerly Altran Technologies)",
+  "dateRange": "(2014 - 2026).",
+  "functionLabel": "Function:",
+  "functions": [
+    "Technical design in the security and hardening of critical IP and transport infrastructures for Telefónica Spain (<strong>red RIMA, red Fusión, red Anillo, and red Rumba</strong>).",
+    "Implementation of Hardening guides based on <strong>CIS Benchmarks</strong> and <strong>STIG</strong> standards for multi-vendor network equipment (Cisco, Juniper, Nokia, Huawei, Ericsson, and Red Hat).",
+    "Design and deployment of perimeter security controls, access policy management (<strong>ACLs, Control Plane Policing</strong>), authentication protocols (<strong>RADIUS, TACACS+, LDAP</strong>), and integration with <strong>Linux PAM modules</strong>.",
+    "Automation of compliance and hardening audits using <strong>HP Network Automation</strong> for configuration control in massive production environments.",
+    "Development of <strong>SOP (Standard Operating Procedures)</strong> technical documentation, standardization of security reports, and level 3 support in <strong>FOA</strong> (First Office Application) deployments."
+  ]
+}

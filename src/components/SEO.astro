@@ -9,19 +9,68 @@ interface Props {
 
 const {
   title,
-  description = "Currículum Vitae de Luis Reoyo - Desarrollador y profesional de la tecnología.",
+  description = (Astro.currentLocale ?? 'es') === 'es' ? "Currículum Vitae de Luis Reoyo - Senior en Seguridad de Redes." : "Luis Reoyo's Resume - Network Security Engineer.",
   image = "/og-image.jpg",
   canonicalURL = new URL(Astro.url.pathname, "https://curriculum.genkipool.com"),
   type = "website",
 } = Astro.props;
 
+const lang = Astro.currentLocale ?? 'es';
 const siteName = "CV Luis Reoyo";
-const twitterHandle = "@luisreoyo";
+const twitterHandle = "@GenkipoolC";
 const defaultThemeColor = "#1e2d3d";
 
 const canonicalStr = typeof canonicalURL === 'string' ? canonicalURL : canonicalURL.toString();
 const baseUrl = "https://curriculum.genkipool.com";
 const fullImageUrl = new URL(image, baseUrl).toString();
+const jobTitle = lang === 'es' ? "Senior en Seguridad de Redes" : "Network Security Engineer";
+
+import { getCollection } from 'astro:content';
+
+const eduEntries = await getCollection('education', ({ id }) => id.startsWith(lang + '/'));
+const skillsEntries = await getCollection('skills', ({ id }) => id.startsWith(lang + '/'));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Luis Reoyo",
+  "url": baseUrl,
+  "image": fullImageUrl,
+  "jobTitle": jobTitle,
+  "description": description,
+  "sameAs": [
+    "https://github.com/genkipool",
+    "https://x.com/GenkipoolC"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Madrid",
+    "addressCountry": "ES"
+  },
+  "knowsAbout": skillsEntries[0]?.data.items.map(s => s.value1.replace(/<[^>]+>/g, '')).filter(Boolean) || [],
+  "alumniOf": eduEntries.filter(e => e.data.id === 'master' || e.data.id === 'degree').map(e => ({
+    "@type": "EducationalOrganization",
+    "name": e.data.details.find(d => d.label.includes('Centro') || d.label.includes('Center'))?.text || "Unknown"
+  })),
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Genkipool"
+  },
+  "hasCredential": eduEntries.filter(e => e.data.badgeClass.includes('ccnp') || e.data.badgeClass.includes('ceh')).map(e => {
+    const org = e.data.details.find(d => d.label.includes('Institu'))?.text || "Unknown";
+    const verif = e.data.details.find(d => d.label.includes('Verif'))?.url;
+    return {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "certification",
+      "name": e.data.title,
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": org
+      },
+      ...(verif ? { url: verif } : {})
+    };
+  })
+};
 ---
 
 <!-- Global Metadata -->
@@ -55,7 +104,7 @@ const fullImageUrl = new URL(image, baseUrl).toString();
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="Luis Alberto Reoyo Bolaños - CV Header" />
 <meta property="og:site_name" content={siteName} />
-<meta property="og:locale" content="es_ES" />
+<meta property="og:locale" content={lang === 'es' ? "es_ES" : "en_US"} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
@@ -66,12 +115,4 @@ const fullImageUrl = new URL(image, baseUrl).toString();
 <meta name="twitter:site" content={twitterHandle} />
 
 <!-- JSON-LD Structured Data -->
-<script is:inline type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Luis Reoyo",
-  "url": baseUrl,
-  "image": fullImageUrl,
-  "jobTitle": "Software Developer",
-  "description": description
-})} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

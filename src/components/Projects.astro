@@ -1,107 +1,47 @@
 ---
+import { getCollection } from 'astro:content';
 import { useTranslations } from '#/i18n/utils';
 
-const { lang } = Astro.props;
+const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
+
+const projEntries = await getCollection('projects', ({ id }) => id.startsWith(lang + '/'));
+projEntries.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="cv-section">
   <h2 class="section-title">{t('nav.projects')}</h2>
 
-  <!-- PROJECT: Radix Rust SDK -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.project')}</span>
-      <strong>{t('proj.rustsdk.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.github')}</span>
-        <a href="https://github.com/genkipool/radixdlt-rust-sdk" target="_blank" rel="noopener noreferrer" class="project-link">github.com/genkipool/radixdlt-rust-sdk</a>
+  {projEntries.map(entry => (
+    <div class="exp-item">
+      <div class="exp-label">
+        <span class="category-label">{entry.data.categoryLabel}</span>
+        <strong>{entry.data.title}</strong>
       </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.description')}</span>
-        <span set:html={t('proj.rustsdk.desc')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.rustsdk.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.rustsdk.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.rustsdk.f3')} />
-      </div>
-    </div>
-  </div>
-
-  <!-- PROJECT: Intelligent Workspace -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.project')}</span>
-      <strong>{t('proj.navigator.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.status')}</span>
-        {t('proj.navigator.status')}
-      </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.description')}</span>
-        <span set:html={t('proj.navigator.desc')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.navigator.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.navigator.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.navigator.f3')} />
+      <div class="exp-details">
+        {entry.data.links.map(link => (
+          <div class="exp-company">
+            <span class="detail-label">{link.label}</span>
+            {link.url ? (
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="project-link">{link.text}</a>
+            ) : (
+              link.text
+            )}
+          </div>
+        ))}
+        <div class="exp-func">
+          <span class="detail-label">{entry.data.descriptionLabel}</span>
+          <span set:html={entry.data.description} />
+        </div>
+        {entry.data.functions.map(func => (
+          <div class="exp-func extra">
+            <span class="detail-label">&nbsp;</span>
+            <span set:html={func} />
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-
-  <!-- PROJECT: Radix DLT Community -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.collaboration')}</span>
-      <strong>{t('proj.radix.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.web')}</span>
-        <a href="https://radix-community.genkipool.com/es" target="_blank" rel="noopener noreferrer" class="project-link">radix-community.genkipool.com</a>
-      </div>
-      <div class="exp-company">
-        <span class="detail-label">{t('label.github')}</span>
-        <a href="https://github.com/genkipool/Radix_Community" target="_blank" rel="noopener noreferrer" class="project-link">github.com/genkipool/Radix_Community</a>
-      </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.description')}</span>
-        <span set:html={t('proj.radix.desc')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.radix.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.radix.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('proj.radix.f3')} />
-      </div>
-    </div>
-  </div>
-
+  ))}
 </section>
 
 <style>

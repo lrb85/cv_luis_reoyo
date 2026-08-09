@@ -1,132 +1,41 @@
 ---
+import { getCollection } from 'astro:content';
 import { useTranslations } from '#/i18n/utils';
 
-const { lang } = Astro.props;
+const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
+
+// Get the experience collection for the current language, and sort it by order
+const experienceEntries = await getCollection('experience', ({ id }) => {
+  return id.startsWith(lang + '/');
+});
+experienceEntries.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="cv-section">
   <h2 class="section-title">{t('nav.experience')}</h2>
 
-  <!-- EXP: Blockchain -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.category')}</span>
-      <strong>{t('exp.blockchain.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.project')}</span>
-        {t('exp.blockchain.company')}
-        <span class="date-range">(2021 - {t('label.currently')}).</span>
+  {experienceEntries.map(entry => (
+    <div class="exp-item">
+      <div class="exp-label">
+        <span class="category-label">{t('label.category')}</span>
+        <strong>{entry.data.title}</strong>
       </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.function')}</span>
-        <span set:html={t('exp.blockchain.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.blockchain.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.blockchain.f3')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.blockchain.f4')} />
+      <div class="exp-details">
+        <div class="exp-company">
+          <span class="detail-label">{entry.data.companyLabel}</span>
+          {entry.data.company}
+          {entry.data.dateRange && <span class="date-range">{entry.data.dateRange}</span>}
+        </div>
+        {entry.data.functions.map((func, index) => (
+          <div class={`exp-func ${index > 0 ? 'extra' : ''}`}>
+            <span class="detail-label">{index === 0 ? entry.data.functionLabel : '\u00A0'}</span>
+            <span set:html={func} />
+          </div>
+        ))}
       </div>
     </div>
-  </div>
-
-  <!-- EXP: Tutor -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.category')}</span>
-      <strong>{t('exp.tutor.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.company')}</span>
-        {t('exp.tutor.company')}
-        <span class="date-range">(2019 - 2022).</span>
-      </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.function')}</span>
-        <span set:html={t('exp.tutor.f1')} />
-      </div>
-    </div>
-  </div>
-
-  <!-- EXP: Auditor -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.category')}</span>
-      <strong>{t('exp.auditor.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.company')}</span>
-        Capgemini Engineering (antiguamente Altran Tecnologies)
-        <span class="date-range">(2017 - 2026).</span>
-      </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.function')}</span>
-        <span set:html={t('exp.auditor.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.auditor.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.auditor.f3')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.auditor.f4')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.auditor.f5')} />
-      </div>
-    </div>
-  </div>
-
-  <!-- EXP: Hardening -->
-  <div class="exp-item">
-    <div class="exp-label">
-      <span class="category-label">{t('label.category')}</span>
-      <strong>{t('exp.hardening.title')}</strong>
-    </div>
-    <div class="exp-details">
-      <div class="exp-company">
-        <span class="detail-label">{t('label.company')}</span>
-        Capgemini Engineering (antiguamente Altran Tecnologies)
-        <span class="date-range">(2014 - 2026).</span>
-      </div>
-      <div class="exp-func">
-        <span class="detail-label">{t('label.function')}</span>
-        <span set:html={t('exp.hardening.f1')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.hardening.f2')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.hardening.f3')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.hardening.f4')} />
-      </div>
-      <div class="exp-func extra">
-        <span class="detail-label">&nbsp;</span>
-        <span set:html={t('exp.hardening.f5')} />
-      </div>
-    </div>
-  </div>
+  ))}
 </section>
 
 <style>

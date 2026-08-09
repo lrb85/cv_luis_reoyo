@@ -1,0 +1,17 @@
+{
+  "order": 1,
+  "categoryLabel": "Degree:",
+  "title": "Information and Computer Security Specialist",
+  "details": [
+    {
+      "label": "Course:",
+      "text": "Postgraduate (30 credits)"
+    },
+    {
+      "label": "Center:",
+      "text": "University of Castilla La Mancha"
+    }
+  ],
+  "badge": "SEG",
+  "badgeClass": "seg"
+}

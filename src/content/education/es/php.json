@@ -1,0 +1,17 @@
+{
+  "order": 5,
+  "categoryLabel": "Titulación:",
+  "title": "Certificado profesional de Hacking con PHP (100 horas)",
+  "details": [
+    {
+      "label": "Curso:",
+      "text": "Hacking con PHP (100 horas)"
+    },
+    {
+      "label": "Centro:",
+      "text": "The Security Sentinel"
+    }
+  ],
+  "badge": "CPPHP",
+  "badgeClass": "cpphp"
+}

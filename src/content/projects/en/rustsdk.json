@@ -1,0 +1,19 @@
+{
+  "order": 1,
+  "categoryLabel": "Project:",
+  "title": "Radix DLT Rust SDK",
+  "links": [
+    {
+      "label": "GitHub:",
+      "text": "github.com/genkipool/radixdlt-rust-sdk",
+      "url": "https://github.com/genkipool/radixdlt-rust-sdk"
+    }
+  ],
+  "descriptionLabel": "Description:",
+  "description": "Development of native <strong>Rust</strong> SDK and tools for the Radix decentralized network, implementing off-ledger primitives that previously only existed in JS/TS.",
+  "functions": [
+    "<strong>Core & Cryptography:</strong> Implementation of <strong>ROLA</strong> proofs verification (Login with Radix), key management (Keystore), and transaction building.",
+    "<strong>P2P Connectivity:</strong> Development of modular transport clients using <strong>WebRTC</strong> and <strong>Iroh</strong> for direct and secure communication with the mobile Radix Wallet.",
+    "<strong>AI & MCP:</strong> Creation of `radixdlt-connector-mcp`, a local MCP server that allows AI agents to build and send transactions to the user's mobile for signing, without exposing private keys."
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "order": 1,
+  "items": [
+    {
+      "label1": "Lenguaje:",
+      "value1": "Python y PHP",
+      "label2": "Nivel:",
+      "value2": "Profesional"
+    },
+    {
+      "label1": "Sistema:",
+      "value1": "Linux",
+      "label2": "Nivel:",
+      "value2": "Profesional"
+    },
+    {
+      "label1": "Redes:",
+      "value1": "Cisco y Juniper",
+      "label2": "Nivel:",
+      "value2": "Profesional"
+    },
+    {
+      "label1": "Idioma:",
+      "value1": "Inglés",
+      "label2": "Nivel:",
+      "value2": "Técnico"
+    },
+    {
+      "label1": "Carnet:",
+      "value1": "Conducir",
+      "label2": "Tipo:",
+      "value2": "B"
+    },
+    {
+      "label1": "Herramientas:",
+      "value1": "<span class=\"hide-mobile\">Metasploit, </span>Nmap<span class=\"hide-mobile\">, Scapy, GNS3</span>",
+      "label2": "Nivel:",
+      "value2": "Profesional"
+    }
+  ]
+}

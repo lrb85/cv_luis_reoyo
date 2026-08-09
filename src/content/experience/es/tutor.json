@@ -1,0 +1,11 @@
+{
+  "order": 2,
+  "title": "Tutor del curso de hacking con PHP",
+  "companyLabel": "Empresa:",
+  "company": "Áreas de Servicio de Información (S.L.) Madrid",
+  "dateRange": "(2019 - 2022).",
+  "functionLabel": "Función:",
+  "functions": [
+    "Resolver las dudas del alumnado y evaluar las distintas actividades del curso, actividades como: Hardening <strong>LAMP</strong>, attack <strong>SQL injection</strong>, attacks <strong>DOS</strong>, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, <strong>Tor</strong>."
+  ]
+}

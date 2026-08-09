@@ -1,0 +1,24 @@
+{
+  "order": 3,
+  "categoryLabel": "Collaboration:",
+  "title": "Radix DLT Community Platform",
+  "links": [
+    {
+      "label": "Web:",
+      "text": "radix-community.genkipool.com",
+      "url": "https://radix-community.genkipool.com/es"
+    },
+    {
+      "label": "GitHub:",
+      "text": "github.com/genkipool/Radix_Community",
+      "url": "https://github.com/genkipool/Radix_Community"
+    }
+  ],
+  "descriptionLabel": "Description:",
+  "description": "Comprehensive development of the official community platform for the Radix DLT ecosystem using <strong>Next.js 15+</strong> and <strong>React 19</strong>, focused on technology outreach and high-performance Web3 services.",
+  "functions": [
+    "<strong>Web3 & Blockchain:</strong> Implementation of wallet connection, advanced <strong>Staking</strong> management with validators, and real-time rewards visualization using the official Radix SDK.",
+    "<strong>Dashboard & Analytics:</strong> Development of an interactive control panel with dynamic charts (<strong>Recharts</strong>) and integrated transaction explorer for critical ecosystem metrics.",
+    "<strong>Infrastructure:</strong> Modern stack with <strong>Tailwind CSS 4</strong>, <strong>Supabase</strong>, <strong>Redis (Upstash)</strong> caching, and full multilingual support with a dynamic theme system."
+  ]
+}

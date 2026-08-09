@@ -1,0 +1,22 @@
+{
+  "order": 2,
+  "categoryLabel": "Titulación:",
+  "title": "CCNP Security (Cisco Certified Network Professional Security)",
+  "details": [
+    {
+      "label": "Institución:",
+      "text": "Cisco Systems Inc"
+    },
+    {
+      "label": "Centro:",
+      "text": "CBCenter Training S.L."
+    },
+    {
+      "label": "Verificación:",
+      "text": "VHYXZZFL7DREQT33",
+      "url": "https://cp.certmetrics.com/cisco/en/public/verify/credential/VHYXZZFL7DREQT33"
+    }
+  ],
+  "badge": "CCNP",
+  "badgeClass": "ccnp"
+}

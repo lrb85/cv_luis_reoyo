@@ -1,0 +1,15 @@
+{
+  "order": 3,
+  "title": "4G/5G Mobile Network Security Auditor and Pentester",
+  "companyLabel": "Company:",
+  "company": "Capgemini Engineering (formerly Altran Technologies)",
+  "dateRange": "(2017 - 2026).",
+  "functionLabel": "Function:",
+  "functions": [
+    "Technical security auditing and pentesting for Telefónica Spain's Next Generation Mobile Network (Red Única / NGN), ensuring the integrity of critical 4G/5G infrastructures under the <strong>MITRE ATT&CK</strong> framework.",
+    "Execution of penetration tests and vulnerability analysis on CORE and access nodes (RAN/SRAN), including equipment such as <strong>HSS, HLR, MTAS/CSCF, BNG HL4, NRF, NEF, NCE, UPF LBO, SMF, SEPP, and AIRSCALE</strong>.",
+    "Performing performance tests and Denial of Service (DoS/Flooding) attacks to validate the robustness of critical elements like <strong>DRA VoLTE, CNEIR, BAF, ASOFA, vAFG, PTS, and CANG</strong>.",
+    "Auditing signaling protocols (GTP, Diameter, SIP, SCTP, MAP) and securing network interfaces (N1, N2, N3, N4) to prevent interceptions and fraud in mobile networks.",
+    "Security evaluation of network management APIs (NEF/NCE) and hardening of virtualized network functions (VNF) under <strong>3GPP and GSMA</strong> security standards."
+  ]
+}

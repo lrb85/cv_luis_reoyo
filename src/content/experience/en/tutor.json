@@ -1,0 +1,11 @@
+{
+  "order": 2,
+  "title": "Hacking with PHP Course Tutor",
+  "companyLabel": "Company:",
+  "company": "Information Service Areas (S.L.) Madrid",
+  "dateRange": "(2019 - 2022).",
+  "functionLabel": "Function:",
+  "functions": [
+    "Answering student questions and evaluating course activities, including: <strong>LAMP</strong> Hardening, <strong>SQL injection</strong>, <strong>DoS</strong> attacks, <strong>XSS</strong>, <strong>CSRF</strong>, <strong>webShell</strong>, <strong>XXE</strong>, <strong>XML Bomb</strong>, <strong>LFI</strong>, <strong>RFI</strong>, cookie hijacking, and <strong>Tor</strong>."
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "order": 3,
+  "title": "Auditor y pentester en seguridad de red móvil 4G/5G",
+  "companyLabel": "Empresa:",
+  "company": "Capgemini Engineering (antiguamente Altran Technologies)",
+  "dateRange": "(2017 - 2026).",
+  "functionLabel": "Función:",
+  "functions": [
+    "Auditoría técnica de seguridad y pentesting para la Red Móvil de Nueva Generación (Red Única / NGN) de Telefónica España, garantizando la integridad de infraestructuras críticas 4G/5G bajo el framework <strong>MITRE ATT&CK</strong>.",
+    "Ejecución de pruebas de penetración y análisis de vulnerabilidades en nodos CORE y acceso (RAN/SRAN), incluyendo equipos como <strong>HSS, HLR, MTAS/CSCF, BNG HL4, NRF, NEF, NCE, UPF LBO, SMF, SEPP y AIRSCALE</strong>.",
+    "Realización de test de rendimiento y ataques de Denegación de Servicio (DoS/Flooding) para validar la robustez de elementos críticos como <strong>DRA VoLTE, CNEIR, BAF, ASOFA, vAFG, PTS y CANG</strong>.",
+    "Auditoría de protocolos de señalización (<strong>GTP, Diameter, SIP, SCTP, MAP</strong>) y securización de interfaces de red (<strong>N1, N2, N3, N4</strong>) para prevenir interceptaciones y fraudes en redes móviles.",
+    "Evaluación de seguridad en APIs de gestión de red (<strong>NEF/NCE</strong>) y hardening de funciones de red virtualizadas (<strong>VNF</strong>) bajo estándares de seguridad <strong>3GPP y GSMA</strong>."
+  ]
+}

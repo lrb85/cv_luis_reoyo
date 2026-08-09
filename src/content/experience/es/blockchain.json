@@ -1,0 +1,14 @@
+{
+  "order": 1,
+  "title": "Administrador de infraestructura blockchain",
+  "companyLabel": "Proyecto:",
+  "company": "Genkipool (Cardano y Radix Stake Pool Operator)",
+  "dateRange": "(2021 - Actualidad).",
+  "functionLabel": "Función:",
+  "functions": [
+    "Diseño, despliegue y administración de infraestructura de alta disponibilidad en el cloud de <strong>Hetzner</strong> para el mantenimiento de nodos validadores de las redes <strong>Cardano</strong> y <strong>Radix DLT</strong>.",
+    "Implementación y gestión de entornos virtualizados con <strong>Proxmox</strong>, optimizando el rendimiento de las máquinas virtuales para Relay Nodes y Block Producers.",
+    "Configuración de redes privadas seguras mediante VPN <strong>WireGuard</strong> y políticas estrictas de firewall para garantizar la integridad de las comunicaciones entre nodos.",
+    "Administración de sistemas de backups automatizados, monitorización en tiempo real (<strong>Prometheus/Grafana</strong>) y ejecución de actualizaciones críticas de protocolo (Hard Forks) sin interrupción del servicio."
+  ]
+}

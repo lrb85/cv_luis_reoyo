@@ -1,0 +1,41 @@
+{
+  "order": 1,
+  "items": [
+    {
+      "label1": "Language:",
+      "value1": "Python & PHP",
+      "label2": "Level:",
+      "value2": "Professional"
+    },
+    {
+      "label1": "System:",
+      "value1": "Linux",
+      "label2": "Level:",
+      "value2": "Professional"
+    },
+    {
+      "label1": "Networking:",
+      "value1": "Cisco & Juniper",
+      "label2": "Level:",
+      "value2": "Professional"
+    },
+    {
+      "label1": "Language:",
+      "value1": "English",
+      "label2": "Level:",
+      "value2": "Technical"
+    },
+    {
+      "label1": "License:",
+      "value1": "Driving",
+      "label2": "Type:",
+      "value2": "B"
+    },
+    {
+      "label1": "Tools:",
+      "value1": "<span class=\"hide-mobile\">Metasploit, </span>Nmap<span class=\"hide-mobile\">, Scapy, GNS3</span>",
+      "label2": "Level:",
+      "value2": "Professional"
+    }
+  ]
+}

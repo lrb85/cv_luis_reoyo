@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import { useTranslations } from '#/i18n/utils';
 import cehSvg from '#/assets/badges/ceh.svg';
 import cpphpSvg from '#/assets/badges/hacking_php.svg';
@@ -8,122 +9,43 @@ import ccnp2Svg from '#/assets/badges/ccnp_enterprise_color.svg';
 import hackSvg from '#/assets/badges/hacking_etico.svg';
 import dpeSvg from '#/assets/badges/electronica.svg';
 
-const { lang } = Astro.props;
+const lang = (Astro.currentLocale ?? 'es') as 'es' | 'en';
 const t = useTranslations(lang);
+
+const eduEntries = await getCollection('education', ({ id }) => id.startsWith(lang + '/'));
+eduEntries.sort((a, b) => a.data.order - b.data.order);
 ---
 
 <section class="cv-section" id="education-section">
   <h2 class="section-title">{t('nav.education')}</h2>
   <div class="edu-grid">
 
-    <!-- Especialista en seguridad informática e información -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>{t('edu.master.title')}</strong>
+    {eduEntries.map(entry => (
+      <>
+        <div class="edu-item">
+          <div class="edu-info">
+            <div class="edu-label-main">
+              <span class="category-label">{entry.data.categoryLabel}</span>
+              <strong>{entry.data.title}</strong>
+            </div>
+            <div class="edu-details">
+              {entry.data.details.map(detail => (
+                <div class="edu-row">
+                  <span class="detail-label">{detail.label}</span>
+                  {detail.url ? (
+                    <> {detail.text.replace(detail.text.split(' ').pop() || '', '')} <a href={detail.url} target="_blank" rel="noopener noreferrer" class="project-link">{detail.text.split(' ').pop()}</a></>
+                  ) : (
+                    ` ${detail.text}`
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class={`edu-badge ${entry.data.badgeClass}`}>{entry.data.badge}</div>
         </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.master.course')}</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> {t('edu.master.center')}</div>
-        </div>
-      </div>
-      <div class="edu-badge seg">SEG</div>
-    </div>
-
-    <!-- CCNP Security -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>CCNP Security (Cisco Certified Network Professional Security).</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> Cisco Systems Inc.</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> CBCenter Training SL.</div>
-          <div class="edu-row"><span class="detail-label">{lang === 'es' ? 'Verificación:' : 'Verification:'}</span> <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/VHYXZZFL7DREQT33" target="_blank" rel="noopener noreferrer" class="project-link">VHYXZZFL7DREQT33</a></div>
-        </div>
-      </div>
-      <div class="edu-badge ccnp">CCNP</div>
-    </div>
-
-    <!-- CCNP -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>CCNP (Cisco Certified Network Professional).</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> Cisco Systems Inc.</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> CBCenter Training SL.</div>
-          <div class="edu-row"><span class="detail-label">{lang === 'es' ? 'Verificación:' : 'Verification:'}</span> <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/K1F43XVF1LQQ109Y" target="_blank" rel="noopener noreferrer" class="project-link">K1F43XVF1LQQ109Y</a></div>
-        </div>
-      </div>
-      <div class="edu-badge ccnp2">CCNP</div>
-    </div>
-
-    <!-- CEH -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>CEH - Certified Ethical Hacker (312-50 v10).</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.institution')}</span> EC-Council Certified Ethical Hacker.</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> EC-Council Exam Center.</div>
-        </div>
-      </div>
-      <div class="edu-badge ceh">CEH</div>
-    </div>
-
-    <div class="edu-spacer" style="height: 20px;"></div>
-
-    <!-- PHP Hacking -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>{t('edu.php.title')}</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.php.course')}</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> The Security Sentinel.</div>
-        </div>
-      </div>
-      <div class="edu-badge cpphp">CPPHP</div>
-    </div>
-
-    <!-- Hacking Ético -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>{t('edu.hack.title')}</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.hack.title')}</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> Securizame.</div>
-        </div>
-      </div>
-      <div class="edu-badge hack">HACK</div>
-    </div>
-
-    <!-- Técnico superior -->
-    <div class="edu-item">
-      <div class="edu-info">
-        <div class="edu-label-main">
-          <span class="category-label">{t('label.degree')}</span>
-          <strong>{t('edu.degree.title')}</strong>
-        </div>
-        <div class="edu-details">
-          <div class="edu-row"><span class="detail-label">{t('label.course')}</span> {t('edu.degree.course')}</div>
-          <div class="edu-row"><span class="detail-label">{t('label.center')}</span> I.E.S. Juan de la Cierva.</div>
-        </div>
-      </div>
-      <div class="edu-badge dpe">DPE</div>
-    </div>
+        {entry.data.spacerAfter && <div class="edu-spacer" style="height: 20px;"></div>}
+      </>
+    ))}
 
   </div>
 </section>

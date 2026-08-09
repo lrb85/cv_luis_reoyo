@@ -1,0 +1,17 @@
+{
+  "order": 7,
+  "categoryLabel": "Titulación:",
+  "title": "Técnico superior en Desarrollo de Productos Electrónicos",
+  "details": [
+    {
+      "label": "Curso:",
+      "text": "Grado Superior"
+    },
+    {
+      "label": "Centro:",
+      "text": "I.E.S. Juan de la Cierva"
+    }
+  ],
+  "badge": "DPE",
+  "badgeClass": "dpe"
+}

@@ -1,0 +1,17 @@
+{
+  "order": 1,
+  "categoryLabel": "Titulación:",
+  "title": "Especialista en Seguridad Informática e Información",
+  "details": [
+    {
+      "label": "Curso:",
+      "text": "Posgrado (30 créditos)"
+    },
+    {
+      "label": "Centro:",
+      "text": "Universidad Castilla La Mancha"
+    }
+  ],
+  "badge": "SEG",
+  "badgeClass": "seg"
+}
