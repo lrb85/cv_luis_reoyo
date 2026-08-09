@@ -13,10 +13,10 @@ const t = useTranslations(lang);
     <!-- TOP CONTROLS -->
     <div class="top-controls">
       <div class="top-actions">
-        <button id="copy-markdown" class="theme-btn pdf-btn" aria-label="Copy Markdown" title="Copy Markdown">
+        <button id="copy-markdown" class="theme-btn pdf-btn" aria-label="Copy Markdown" title="Copy Markdown" data-umami-event="Copy Markdown">
           <Icon name="markdown" />
         </button>
-        <button id="download-pdf" class="theme-btn pdf-btn" aria-label="Download PDF" title="Download PDF">
+        <button id="download-pdf" class="theme-btn pdf-btn" aria-label="Download PDF" title="Download PDF" data-umami-event="Download PDF">
           <Icon name="download" />
         </button>
       </div>
@@ -41,15 +41,15 @@ const t = useTranslations(lang);
           {t('header.summary')}
         </p>
         <div class="contact-bar">
-          <a href="mailto:luisrb1985@gmail.com" class="contact-item">
+          <a href="mailto:luisrb1985@gmail.com" class="contact-item" data-umami-event="Email Contact">
             <Icon name="email" class="contact-icon" />
             luisrb1985@gmail.com
           </a>
-          <a href="tel:617238725" class="contact-item">
+          <a href="tel:617238725" class="contact-item" data-umami-event="Phone Contact">
             <Icon name="phone" class="contact-icon" />
             617 23 87 25
           </a>
-          <a href="https://github.com/genkipool" target="_blank" rel="noopener noreferrer" class="contact-item">
+          <a href="https://github.com/genkipool" target="_blank" rel="noopener noreferrer" class="contact-item" data-umami-event="GitHub Profile">
             <Icon name="github" class="contact-icon" />
             github.com/genkipool
           </a>
