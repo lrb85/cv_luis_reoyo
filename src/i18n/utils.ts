@@ -14,11 +14,11 @@ export function getYearsOfExperience(): number {
 }
 
 export function useTranslations(lang: keyof typeof ui) {
-  return function t(key: keyof typeof ui[typeof defaultLang]) {
+  return function t(key: keyof typeof ui[typeof defaultLang]): string {
     const str = ui[lang][key] || ui[defaultLang][key];
     if (typeof str === 'string' && str.includes('{years}')) {
-      return str.replace('{years}', getYearsOfExperience().toString()) as any;
+      return str.replace('{years}', getYearsOfExperience().toString());
     }
-    return str;
+    return str as string;
   }
 }

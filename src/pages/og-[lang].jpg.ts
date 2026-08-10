@@ -26,11 +26,11 @@ export const GET: APIRoute = async ({ params }) => {
     ? "SENIOR EN SEGURIDAD DE REDES | TELCO Y HARDENING"
     : "SENIOR IN NETWORK SECURITY | TELCO & HARDENING";
   
-  let summary = isES
+  let summary: string = lang === 'es' 
     ? ui.es['header.summary'] || "{years} años de experiencia como técnico de seguridad en telecomunicaciones..."
     : ui.en['header.summary'] || "{years} years of experience as a telecommunications security technician...";
   
-  summary = summary.replace('{years}', getYearsOfExperience().toString()) as any;
+  summary = summary.replace('{years}', getYearsOfExperience().toString());
 
   const url = "https://curriculum.genkipool.com";
 
@@ -70,7 +70,7 @@ export const GET: APIRoute = async ({ params }) => {
     </div>
   `;
 
-  const markup = html([markupStr] as any);
+  const markup = html([markupStr] as unknown as TemplateStringsArray);
 
   const svg = await satori(markup, {
     width: 1200,
