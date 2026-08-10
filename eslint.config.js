@@ -3,7 +3,7 @@ import tseslint from 'typescript-eslint';
 import eslintPluginAstro from 'eslint-plugin-astro';
 import globals from 'globals';
 
-export default tseslint.config(
+export default [
   {
     ignores: ['dist', '.astro', 'node_modules'],
   },
@@ -18,8 +18,6 @@ export default tseslint.config(
       },
     },
     rules: {
-// '@typescript-eslint/no-explicit-any': 'off',
-// '@typescript-eslint/triple-slash-reference': 'off',
     },
   }
-);
+];
