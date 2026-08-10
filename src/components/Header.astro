@@ -16,9 +16,9 @@ const t = useTranslations(lang);
         <button id="copy-markdown" class="theme-btn pdf-btn" aria-label={t('header.btn.copy')} title={t('header.btn.copy')} data-umami-event="Copy Markdown">
           <Icon name="markdown" />
         </button>
-        <button id="download-pdf" class="theme-btn pdf-btn" aria-label={t('header.btn.pdf')} title={t('header.btn.pdf')} data-umami-event="Download PDF">
+        <a href={lang === 'es' ? '/cv-luis-es.pdf' : '/cv-luis-en.pdf'} download="Luis_Reoyo_CV.pdf" id="download-pdf" class="theme-btn pdf-btn" aria-label={t('header.btn.pdf')} title={t('header.btn.pdf')} data-umami-event="Download PDF">
           <Icon name="download" />
-        </button>
+        </a>
       </div>
 
       <div class="lang-switcher">

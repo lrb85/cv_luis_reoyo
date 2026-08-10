@@ -64,10 +64,7 @@ const t = useTranslations(lang);
     };
 
     document.addEventListener('astro:page-load', () => {
-      if (window.location.search.includes('print=true')) {
-        window.history.replaceState({}, document.title, window.location.pathname);
-        setTimeout(() => window.print(), 500);
-      }
+
 
       const themeBtn = document.getElementById('theme-toggle');
       if (themeBtn) {
@@ -77,10 +74,7 @@ const t = useTranslations(lang);
         themeBtn.title = upcomingTheme === 'light' ? themeBtn.getAttribute('data-title-light') : themeBtn.getAttribute('data-title-dark');
       }
 
-      const pdfBtn = document.getElementById('download-pdf');
-      if (pdfBtn) {
-        pdfBtn.addEventListener('click', () => window.print());
-      }
+
 
       const copyMdBtn = document.getElementById('copy-markdown');
       if (copyMdBtn) {
