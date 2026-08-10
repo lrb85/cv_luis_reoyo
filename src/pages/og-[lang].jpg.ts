@@ -70,7 +70,6 @@ export const GET: APIRoute = async ({ params }) => {
     </div>
   `;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const markup = html([markupStr] as any);
 
   const svg = await satori(markup, {
