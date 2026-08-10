@@ -17,8 +17,8 @@
   "descriptionLabel": "Descripción:",
   "description": "Desarrollo integral de la plataforma comunitaria oficial para el ecosistema Radix DLT utilizando <strong>Next.js 15+</strong> y <strong>React 19</strong>, enfocada en la divulgación tecnológica y servicios Web3 de alto rendimiento.",
   "functions": [
-    "<strong>Web3 & Blockchain:</strong> Implementación de conexión de billetera (Wallet), gestión avanzada de <strong>Staking</strong> con validadores y visualización de recompensas en tiempo real mediante el SDK oficial de Radix.",
-    "<strong>Dashboard & Análisis:</strong> Desarrollo de un panel de control interactivo con gráficas dinámicas (<strong>Recharts</strong>) y explorador de transacciones integrado para métricas críticas del ecosistema.",
+    "<strong>Web3 y Blockchain:</strong> Implementación de conexión de billetera (Wallet), gestión avanzada de <strong>Staking</strong> con validadores y visualización de recompensas en tiempo real mediante el SDK oficial de Radix.",
+    "<strong>Dashboard y Análisis:</strong> Desarrollo de un panel de control interactivo con gráficas dinámicas (<strong>Recharts</strong>) y explorador de transacciones integrado para métricas críticas del ecosistema.",
     "<strong>Infraestructura:</strong> Stack moderno con <strong>Tailwind CSS 4</strong>, <strong>Supabase</strong>, caché en <strong>Redis (Upstash)</strong> y soporte multilingüe completo con sistema de temas dinámico."
   ]
 }
