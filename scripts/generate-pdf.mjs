@@ -23,7 +23,10 @@ server.listen(0, async () => {
   
   let browser;
   try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await puppeteer.launch({ 
+      headless: true,
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     
     // Generate ES PDF
     const pageEs = await browser.newPage();
