@@ -30,7 +30,7 @@ export const GET: APIRoute = async ({ params }) => {
     ? ui.es['header.summary'] || "{years} años de experiencia como técnico de seguridad en telecomunicaciones..."
     : ui.en['header.summary'] || "{years} years of experience as a telecommunications security technician...";
   
-  summary = summary.replace('{years}', getYearsOfExperience().toString());
+  summary = summary.replace('{years}', getYearsOfExperience().toString()) as any;
 
   const url = "https://curriculum.genkipool.com";
 

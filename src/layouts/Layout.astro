@@ -18,7 +18,7 @@ const t = useTranslations(lang);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
   <ClientRouter />
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="d892b021-e903-4040-b41d-768fde8cce54"></script>
+  <script is:inline defer src="https://cloud.umami.is/script.js" data-website-id="d892b021-e903-4040-b41d-768fde8cce54"></script>
   <script is:inline>
     const setTheme = () => {
       const theme = (() => {
@@ -59,7 +59,7 @@ const t = useTranslations(lang);
       const themeBtn = document.getElementById('theme-toggle');
       if (themeBtn) {
         const upcomingTheme = nextTheme === 'light' ? 'dark' : 'light';
-        themeBtn.title = upcomingTheme === 'light' ? themeBtn.getAttribute('data-title-light') : themeBtn.getAttribute('data-title-dark');
+        themeBtn.title = upcomingTheme === 'light' ? themeBtn.getAttribute('data-title-light') || '' : themeBtn.getAttribute('data-title-dark') || '';
       }
     };
 
@@ -71,7 +71,7 @@ const t = useTranslations(lang);
         themeBtn.addEventListener('click', handleToggle);
         const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
         const upcomingTheme = currentTheme === 'light' ? 'dark' : 'light';
-        themeBtn.title = upcomingTheme === 'light' ? themeBtn.getAttribute('data-title-light') : themeBtn.getAttribute('data-title-dark');
+        themeBtn.title = upcomingTheme === 'light' ? themeBtn.getAttribute('data-title-light') || '' : themeBtn.getAttribute('data-title-dark') || '';
       }
 
 

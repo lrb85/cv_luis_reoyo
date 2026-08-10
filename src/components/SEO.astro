@@ -50,7 +50,7 @@ const jsonLd = {
     "addressCountry": "ES"
   },
   "knowsAbout": skillsEntries[0]?.data.items.map(s => s.value1.replace(/<[^>]+>/g, '')).filter(Boolean) || [],
-  "alumniOf": eduEntries.filter(e => e.data.id === 'master' || e.data.id === 'degree').map(e => ({
+  "alumniOf": eduEntries.filter(e => e.id === 'master' || e.id === 'degree').map(e => ({
     "@type": "EducationalOrganization",
     "name": e.data.details.find(d => d.label.includes('Centro') || d.label.includes('Center'))?.text || "Unknown"
   })),

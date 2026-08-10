@@ -17,7 +17,7 @@ export function useTranslations(lang: keyof typeof ui) {
   return function t(key: keyof typeof ui[typeof defaultLang]) {
     let str = ui[lang][key] || ui[defaultLang][key];
     if (typeof str === 'string' && str.includes('{years}')) {
-      str = str.replace('{years}', getYearsOfExperience().toString());
+      return str.replace('{years}', getYearsOfExperience().toString()) as any;
     }
     return str;
   }

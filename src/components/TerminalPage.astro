@@ -109,7 +109,7 @@ const i18nTerminal = {
     </div>
   </div>
 
-  <script define:vars={{ i18nTerminal, homeUrl }}>
+  <script is:inline define:vars={{ i18nTerminal, homeUrl }}>
     document.addEventListener('astro:page-load', () => {
       const form = document.getElementById('term-form');
       const input = document.getElementById('term-input');

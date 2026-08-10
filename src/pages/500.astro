@@ -41,7 +41,7 @@ const t = useTranslations(lang);
   <script>
     document.addEventListener('astro:page-load', () => {
       const form = document.getElementById('term-form');
-      const input = document.getElementById('term-input');
+      const input = document.getElementById('term-input') as HTMLInputElement;
       const output = document.getElementById('term-output');
       
       if (!form || !input || !output) return;
