@@ -287,6 +287,16 @@ const t = useTranslations(lang);
   }
 
   @media print {
+    :root, :root[data-theme="dark"] {
+      --bg-main: var(--white) !important;
+      --bg-card: var(--white) !important;
+      --bg-section: var(--section-bg) !important;
+      --text-main: var(--text-dark) !important;
+      --text-sub: var(--text-mid) !important;
+      --border-main: var(--border) !important;
+      --header-grad: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%) !important;
+      --blue-accent: #4a9ecf !important;
+    }
     @page { margin: 10mm 0; }
     @page :first { margin-top: 0; }
     html { font-size: 12px !important; }
